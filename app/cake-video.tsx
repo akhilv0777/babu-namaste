@@ -26,7 +26,6 @@ export default function CakeVideo() {
           playsInline
           preload="metadata"
           controls={false}
-          poster="/theme/assets/video/cake.jpg"
           aria-label="Birthday celebration video"
           onPlay={() => setIsPlaying(true)}
           onEnded={() => window.blowCandleAndReveal?.()}
