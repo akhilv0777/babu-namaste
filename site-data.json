@@ -379,9 +379,7 @@
       ],
       ".hobbyGallery h2": "Birthday favorites",
       ".hobbyItem span": ["birthday cake", "midnight wishes", "birthday roses"],
-      ".quoteSlip": "May every candle carry a wish that finds its way to you.",
-      ".cake-top span": "{{name}}",
-      ".visually-hidden": "Tap or press Enter to blow out the candle"
+      ".quoteSlip": "May every candle carry a wish that finds its way to you."
     },
     "attributes": {
       ".nameTitle": { "data-text": "{{name}}" },

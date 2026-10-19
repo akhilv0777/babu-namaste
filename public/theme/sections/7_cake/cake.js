@@ -22,38 +22,17 @@
 
   window.blowCandleAndReveal = function () {
     if (isDeskBlown) return;
-    const $desk = $("#mainContainerDesk");
-    const $section = $("#cakeFinaleSection");
-
-    $desk.addClass("blowing");
-    $("#tap-text").css("opacity", 0);
-
-    setTimeout(() => {
-      $("#flame").hide();
-      isDeskBlown = true;
-      $("#cake").css("cursor", "default");
-
-      setTimeout(() => {
-        $desk.removeClass("blowing");
-        setTimeout(() => {
-          $desk.css("opacity", 0);
-          $section.css("background", "#0a0a0a");
-
-          setTimeout(() => {
-            $("#grandReveal").removeClass("hidden");
-            const fx = new BirthdayEffect();
-            let then = Date.now();
-            const loop = () => {
-              fxAnimationId = requestAnimationFrame(loop);
-              const now = Date.now();
-              fx.update((now - then) / 1000);
-              then = now;
-            };
-            loop();
-          }, 800);
-        }, 800);
-      }, 600);
-    }, 500);
+    isDeskBlown = true;
+    $("#grandReveal").removeClass("hidden");
+    const fx = new BirthdayEffect();
+    let then = Date.now();
+    const loop = () => {
+      fxAnimationId = requestAnimationFrame(loop);
+      const now = Date.now();
+      fx.update((now - then) / 1000);
+      then = now;
+    };
+    loop();
   };
 
   window.closeGrandReveal = function () {
@@ -62,8 +41,6 @@
       fxAnimationId = null;
     }
     $("#grandReveal").addClass("hidden");
-    $("#cakeFinaleSection").css("background", "");
-    $("#mainContainerDesk").css("opacity", 1);
   };
 
   /* ---------------- CANVAS FIREWORKS ---------------- */
@@ -181,11 +158,6 @@
           `<span>Tap here</span>` +
           `</button>`,
       );
-      if (data.grandReveal.tapHint) {
-        $("#tap-text").html(
-          `${data.grandReveal.tapHint} <i class="fa-solid fa-cake-candles"></i>`,
-        );
-      }
     }
 
     if (data.spinLabel) $("#spinLabelText").text(data.spinLabel);
