@@ -1,0 +1,1606 @@
+/* ═══════════════════════════════════════════════════════════════
+   CAKE FINALE SECTION
+   ═══════════════════════════════════════════════════════════════ */
+#cakeFinaleSection {
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+.container-desk {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 51px;
+  top: 0;
+  width: 10rem;
+  height: 10rem;
+  transform: scale(1.2);
+  z-index: 5;
+  transition: opacity 1s ease;
+}
+/* -- LIGHTS -- */
+.lights {
+  display: none;
+}
+.bulb {
+  position: relative;
+  width: 35px;
+  height: 50px;
+  transform-origin: top center;
+  animation: wireSwing 3s ease-in-out infinite alternate;
+  --bulb-color: var(--bulb-blue);
+  --bulb-glow: var(--bulb-blue-glow);
+}
+.bulb::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% - 22px);
+  background: var(--bulb-wire);
+}
+.bulb::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  background: var(--bulb-color);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  animation: heartTwinkle 0.4s infinite alternate;
+}
+
+/* Har bulb ka apna color — sab variables se */
+.bulb:nth-child(1) {
+  --bulb-color: var(--bulb-blue);
+  --bulb-glow: var(--bulb-blue-glow);
+  height: 45px;
+}
+.bulb:nth-child(1)::after {
+  animation-duration: 0.3s;
+  animation-delay: 0.1s;
+}
+.bulb:nth-child(2) {
+  --bulb-color: var(--bulb-pink);
+  --bulb-glow: var(--bulb-pink-glow);
+  height: 65px;
+  animation-delay: 0.3s;
+}
+.bulb:nth-child(2)::after {
+  animation-duration: 0.5s;
+  animation-delay: 0.4s;
+}
+.bulb:nth-child(3) {
+  --bulb-color: var(--bulb-cyan);
+  --bulb-glow: var(--bulb-cyan-glow);
+  height: 35px;
+  animation-delay: 0.6s;
+}
+.bulb:nth-child(3)::after {
+  animation-duration: 0.2s;
+  animation-delay: 0.2s;
+}
+.bulb:nth-child(4) {
+  --bulb-color: var(--bulb-amber);
+  --bulb-glow: var(--bulb-amber-glow);
+  height: 55px;
+  animation-delay: 0.1s;
+}
+.bulb:nth-child(4)::after {
+  animation-duration: 0.4s;
+  animation-delay: 0.5s;
+}
+.bulb:nth-child(5) {
+  --bulb-color: var(--bulb-mint);
+  --bulb-glow: var(--bulb-mint-glow);
+  height: 40px;
+  animation-delay: 0.5s;
+}
+.bulb:nth-child(5)::after {
+  animation-duration: 0.6s;
+  animation-delay: 0.1s;
+}
+
+@keyframes heartTwinkle {
+  0% {
+    filter: drop-shadow(0 0 2px var(--bulb-color));
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.4;
+  }
+  100% {
+    filter: drop-shadow(0 0 12px var(--bulb-color))
+      drop-shadow(0 0 25px var(--bulb-glow));
+    transform: translateX(-50%) scale(1.1);
+    opacity: 1;
+  }
+}
+@keyframes wireSwing {
+  0% {
+    transform: rotate(-6deg);
+  }
+  100% {
+    transform: rotate(6deg);
+  }
+}
+
+/* -- CHOCOLATES -- */
+.chocolate {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  background: var(--choc-brown);
+  border-radius: 3px;
+  z-index: 6;
+  box-shadow: 2px 2px 4px var(--black-a40);
+}
+.chocolate::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 8px;
+  border: 1px solid var(--choc-dark);
+  border-radius: 2px;
+}
+.choc1 {
+  top: 236%;
+  left: -10%;
+  transform: rotate(15deg);
+}
+.choc2 {
+  top: 238%;
+  left: 0%;
+  transform: rotate(-20deg);
+  background: var(--choc-dark);
+}
+.choc3 {
+  top: 237%;
+  left: -20%;
+  transform: rotate(45deg);
+}
+
+/* -- CHARACTER TRANSITIONS -- */
+.container-desk .head,
+.container-desk .neck,
+.container-desk .hair1,
+.container-desk .hair2,
+.container-desk .hair3,
+.container-desk #eyeLeft,
+.container-desk #eyeRight,
+.container-desk #eyeBrowLeft,
+.container-desk #eyeBrowRight,
+.container-desk #nose,
+.container-desk #smile1,
+.container-desk #smile2,
+.container-desk #smile3,
+.container-desk #blush1,
+.container-desk #blush2,
+.container-desk .clothes {
+  transition: all 0.4s ease-in-out;
+}
+
+/* -- CHARACTER PARTS -- */
+.clothes {
+  width: 8em;
+  height: 9em;
+  background: radial-gradient(at 50% 30%, var(--clothes), var(--clothes-shade));
+  position: absolute;
+  border-radius: 5em 5em 7.2em 7.2em;
+  z-index: 5;
+  top: 170%;
+}
+.design {
+  width: 2em;
+  height: 7em;
+  background: var(--white);
+  position: absolute;
+  border-radius: 2%;
+  z-index: 5;
+  top: 12%;
+  left: 20%;
+  transform: translate(80%, -20%) rotate(20deg);
+}
+.buttons1,
+.buttons2 {
+  width: 0.5em;
+  height: 0.5em;
+  background: aliceblue;
+  border-radius: 50%;
+  position: absolute;
+  left: 48%;
+  top: 30%;
+}
+.buttons2 {
+  top: 60%;
+}
+.head {
+  position: absolute;
+  z-index: 3;
+  width: 5em;
+  height: 5.6em;
+  background: var(--skin-color);
+  border-radius: 3em 3em 4em 4em;
+  left: calc(50% - 38px);
+  top: 175px;
+}
+.neck {
+  position: absolute;
+  width: 35px;
+  height: 30px;
+  background: var(--skin-color);
+  left: calc(50% - 15px);
+  top: 160%;
+  border-radius: 0% 0% 50% 50%;
+  z-index: 6;
+}
+.hair1 {
+  position: absolute;
+  width: 4.5em;
+  height: 1em;
+  background: linear-gradient(to bottom, var(--hair-shade), var(--hair));
+  border-radius: 50% 50% 0% 70%;
+  left: 40%;
+  top: 105%;
+  box-shadow: inset 10px -1px var(--white);
+  transform: rotate(30deg);
+  z-index: 5;
+}
+.hair2 {
+  width: 7em;
+  height: 7.8em;
+  position: absolute;
+  background: linear-gradient(to bottom, var(--hair-shade), var(--hair));
+  left: 15%;
+  top: 95%;
+  border-radius: 6em 5.5em 4em 4em;
+  z-index: 2;
+}
+.hair3 {
+  position: absolute;
+  width: 3.3em;
+  height: 1em;
+  background: linear-gradient(to bottom, var(--hair-shade), var(--hair));
+  border-radius: 50% 50% 0% 70%;
+  left: 24%;
+  top: 105%;
+  box-shadow: inset 10px -1px var(--white);
+  transform: rotate(-30deg);
+  z-index: 5;
+}
+#eyeLeft,
+#eyeRight {
+  width: 0.7em;
+  height: 0.5em;
+  background: black;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 5;
+  left: 33%;
+  top: 124%;
+  animation: wink 2s linear infinite;
+}
+#eyeRight {
+  left: 58%;
+}
+#eyeBrowLeft,
+#eyeBrowRight {
+  width: 1.1em;
+  height: 0.15em;
+  background: var(--eyebrow);
+  position: absolute;
+  border-radius: 90% 90% 0% 0%;
+  z-index: 5;
+  top: 120%;
+  left: 31%;
+  transform: rotate(5deg);
+}
+#eyeBrowRight {
+  transform: rotate(-5deg);
+  left: 56%;
+}
+#nose {
+  width: 1px;
+  height: 14px;
+  background: var(--nose-color);
+  position: absolute;
+  border-radius: 90% 90% 0% 0%;
+  z-index: 5;
+  top: 132%;
+  left: 49%;
+  transform: rotate(5deg);
+}
+#nose::before {
+  content: "";
+  position: absolute;
+  z-index: 6;
+  top: 90%;
+  left: 69%;
+  width: 6px;
+  height: 1.5px;
+  background: var(--nose-color);
+  transform: rotate(345deg);
+}
+#smile1,
+#smile2,
+#smile3 {
+  height: 0.4em;
+  width: 1.4em;
+  background-color: var(--smile-color);
+  position: absolute;
+  border-radius: 3% 3% 90% 90%;
+  z-index: 5;
+  top: 150%;
+  left: 44%;
+}
+#smile2,
+#smile3 {
+  width: 0.8em;
+  border-radius: 50%;
+  top: 148%;
+}
+#smile3 {
+  left: 50%;
+}
+#blush1,
+#blush2 {
+  position: absolute;
+  width: 0.7em;
+  height: 0.4em;
+  top: 140%;
+  left: 32%;
+  background-image: radial-gradient(circle, var(--blush-pink), var(--blush-lt));
+  border-radius: 50%;
+  z-index: 10;
+}
+#blush2 {
+  left: 62%;
+}
+
+/* -- BLOWING ANIMATION -- */
+.container-desk.blowing .head,
+.container-desk.blowing .neck,
+.container-desk.blowing #eyeLeft,
+.container-desk.blowing #eyeRight,
+.container-desk.blowing #eyeBrowLeft,
+.container-desk.blowing #eyeBrowRight,
+.container-desk.blowing #nose,
+.container-desk.blowing #blush1,
+.container-desk.blowing #blush2 {
+  transform: translateX(-20px) rotate(-5deg);
+}
+.container-desk.blowing .hair1 {
+  transform: translateX(-20px) rotate(25deg);
+}
+.container-desk.blowing .hair2 {
+  transform: translateX(-20px) rotate(-5deg);
+}
+.container-desk.blowing .hair3 {
+  transform: translateX(-20px) rotate(-35deg);
+}
+.container-desk.blowing .clothes {
+  transform: translateX(-10px) rotate(-2deg);
+}
+.container-desk.blowing #smile1 {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--blowing-smile);
+  top: 148%;
+  transform: translateX(-20px) rotate(-5deg);
+}
+.container-desk.blowing #smile2,
+.container-desk.blowing #smile3 {
+  opacity: 0;
+}
+
+/* -- TABLE & FURNITURE -- */
+#table {
+  width: 24em;
+  height: 1.5em;
+  background: var(--table);
+  position: absolute;
+  border-radius: 1em 1em 0 0;
+  z-index: 5;
+  top: 240%;
+  left: -70%;
+}
+#table::before {
+  content: "";
+  width: 22em;
+  height: 1em;
+  background: var(--table);
+  position: absolute;
+  z-index: 5;
+  top: 100%;
+  left: 5%;
+  border-radius: 0 0 1em 1em;
+}
+#tableLeg {
+  width: 1em;
+  height: 13em;
+  background: var(--table);
+  position: absolute;
+  border-radius: 0 0 1em 1em;
+  z-index: 5;
+  top: 240%;
+  left: -40%;
+  bottom: 0;
+}
+#tableLeg::before {
+  content: "";
+  width: 1em;
+  height: 13em;
+  background: var(--table);
+  position: absolute;
+  z-index: 5;
+  top: 0%;
+  left: 1750%;
+  border-radius: 0 0 1em 1em;
+}
+
+/* -- CAKE -- */
+#cake {
+  position: absolute;
+  z-index: 8;
+  top: 213%;
+  left: 11%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#cake:hover {
+  transform: scale(1.05);
+}
+#tap-text {
+  z-index: 1;
+  position: absolute;
+  top: -40px;
+  left: -2px;
+  color: var(--white);
+  background: var(--tap-pink);
+  font-family: var(--f-body);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px var(--black-a20);
+  animation: bounce 1s infinite alternate;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+#tap-text {
+  top: -8px;
+  left: calc(100% + 8px);
+  width: clamp(112px, 34vw, 160px);
+  padding: 7px 9px;
+  font-size: clamp(10px, 1vw, 12px);
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+}
+#tap-text::after {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  left: -5px;
+  transform: translateY(-50%) rotate(90deg);
+  content: "";
+  border-width: 5px 5px 0;
+  border-style: solid;
+  border-color: var(--tap-pink) transparent transparent transparent;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+.cake-bottom {
+  width: 120px;
+  height: 50px;
+  background: var(--cake-base);
+  border-radius: 10px;
+  border: 3px solid var(--white);
+  position: relative;
+}
+.cake-top {
+  width: 80px;
+  height: 45px;
+  background: var(--cake-top-col);
+  border-radius: 10px 10px 0 0;
+  border: 3px solid var(--white);
+  border-bottom: none;
+  position: absolute;
+  bottom: 50px;
+  left: 17px;
+}
+.cake-top span {
+  position: absolute;
+  inset: 7px 2px auto;
+  color: #fff8e8;
+  font-family: "Dancing Script", cursive;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(90, 36, 22, 0.58);
+  white-space: nowrap;
+}
+.candle-sm {
+  width: 10px;
+  height: 35px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--white),
+    var(--white) 4px,
+    var(--candle-red) 4px,
+    var(--candle-red) 8px
+  );
+  position: absolute;
+  bottom: 95px;
+  left: 52px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.flame {
+  width: 12px;
+  height: 20px;
+  background: var(--flame-yellow);
+  position: absolute;
+  bottom: 130px;
+  left: 51px;
+  border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+  box-shadow: 0 0 10px var(--flame-orange);
+  animation: flicker 0.15s infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* -- FLOWER POT -- */
+#flowerPot {
+  position: absolute;
+  width: 15%;
+  height: 35%;
+  top: 215%;
+  left: -55%;
+  background-color: var(--flower-red);
+  transform-origin: bottom;
+  z-index: 7;
+}
+#flowerPot::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  top: 3%;
+  left: 10%;
+  background: linear-gradient(green, rgb(49, 63, 49));
+  border-radius: 70% 70% 20% 20%;
+  transform: translate(0%, -100%);
+  z-index: 2;
+}
+#flowerPot::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  top: 2%;
+  left: 50%;
+  background: linear-gradient(green, rgb(49, 63, 49));
+  border-radius: 70% 70% 20% 20%;
+  transform: translate(0%, -100%) rotate(10deg);
+  z-index: 2;
+}
+
+/* -- CUP -- */
+#cup {
+  position: absolute;
+  width: 45px;
+  height: 30px;
+  border-bottom: 3px solid var(--cup);
+  border-radius: 0.5em 0.5em 7em 7em;
+  background: var(--cup);
+  z-index: 7;
+  top: 230%;
+  left: -50%;
+}
+#cup::after {
+  content: "";
+  position: absolute;
+  height: 9px;
+  width: 5px;
+  border-radius: 50%;
+  left: -22%;
+  top: 10%;
+  z-index: 7;
+  border: 6px solid var(--cup);
+  background: transparent;
+}
+#cup::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  background: linear-gradient(to bottom, var(--coffee) 15%, var(--cup) 20% 70%);
+  z-index: 1;
+}
+
+/* -- CHAIR -- */
+#chair {
+  position: absolute;
+  width: 10em;
+  height: 11em;
+  border-bottom: 3px solid var(--chair);
+  border-radius: 2em 2em 3em 3em;
+  background: var(--chair);
+  z-index: 1;
+  top: 165%;
+  left: 0%;
+}
+#chair::before {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 7em;
+  border-bottom: 3px solid var(--chair);
+  border-radius: 2em 2em 0.8em 0.8em;
+  background: var(--chair);
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+}
+#chairLeg {
+  position: absolute;
+  width: 1em;
+  height: 6em;
+  border-bottom: 3px solid var(--chair);
+  border-radius: 0.8em 0.8em 2em 2em;
+  background: var(--chair);
+  z-index: 1;
+  top: 310%;
+  left: 62%;
+  transform: rotate(-30deg);
+}
+#chairLeg::before {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 5em;
+  border-bottom: 3px solid var(--chair);
+  border-radius: 0.8em 0.8em 2em 2em;
+  background: var(--chair);
+  z-index: 1;
+  top: -15%;
+  left: -190%;
+  transform: rotate(60deg);
+}
+
+/* -- SKIRT & BODY -- */
+#skirt {
+  position: absolute;
+  width: 7em;
+  height: 3em;
+  border-radius: 5em 5em 0.6em 0.6em;
+  background: linear-gradient(var(--clothes-shade), var(--skirt));
+  z-index: 2;
+  top: 253%;
+  left: 15%;
+  transform: perspective(181deg) skew(10deg);
+}
+#leg {
+  position: absolute;
+  width: 1.5em;
+  height: 8em;
+  border-radius: 2em 2em 2.5em 2.5em;
+  background: var(--skin-color);
+  z-index: 3;
+  top: 264%;
+  left: 32%;
+  transform: rotate(340deg);
+}
+#leg::after {
+  content: "";
+  position: absolute;
+  width: 8.3em;
+  height: 1.5em;
+  border-radius: 2em 2em 2.7em 2.7em;
+  background: var(--skin-color);
+  z-index: 3;
+  top: 28%;
+  left: -100%;
+  transform: rotate(190deg);
+}
+#shoe {
+  position: absolute;
+  width: 2em;
+  height: 3em;
+  border-radius: 2em;
+  background: var(--shoe);
+  z-index: 2;
+  top: 280%;
+  left: 0%;
+  transform: rotate(10deg);
+}
+#shoe::after {
+  content: "";
+  position: absolute;
+  width: 2em;
+  height: 3em;
+  border-radius: 2em;
+  background: var(--shoe);
+  z-index: 7;
+  top: 150%;
+  left: 245%;
+  transform: rotate(-10deg);
+}
+#shoulder {
+  position: absolute;
+  width: 1.4em;
+  height: 3em;
+  border-radius: 0em 0em 2.5em 2.5em;
+  background: var(--skin-color);
+  z-index: 5;
+  top: 205%;
+  left: 10%;
+}
+#shoulder::after {
+  content: "";
+  position: absolute;
+  width: 1.4em;
+  height: 3em;
+  border-radius: 0em 0em 2.5em 2.5em;
+  background: var(--skin-color);
+  z-index: 5;
+  top: 0%;
+  left: 470%;
+}
+
+/* -- HEARTS -- */
+#heartLeft,
+#heartRight,
+#heartCenter {
+  position: relative;
+  color: var(--apple);
+  font-size: 10px;
+  transform: translate(80%, 90%);
+  z-index: 5;
+  animation: hearts 2s linear infinite;
+}
+#heartRight {
+  transform: translate(60%, 20%);
+}
+#heartCenter {
+  transform: translate(40%, 90%);
+}
+@keyframes hearts {
+  0% {
+    bottom: 10px;
+    opacity: 0;
+  }
+  50% {
+    bottom: 50px;
+    opacity: 0.3;
+  }
+  100% {
+    bottom: 80px;
+    opacity: 0;
+  }
+}
+
+/* -- SHARED KEYFRAMES -- */
+@keyframes wink {
+  0%,
+  18%,
+  25%,
+  38%,
+  45%,
+  80% {
+    transform: scaleY(1);
+  }
+  20%,
+  40% {
+    transform: scaleY(0);
+  }
+}
+@keyframes flicker {
+  0% {
+    transform: scale(1) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1.1) rotate(2deg);
+  }
+}
+
+
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FIREWORKS / CELEBRATION
+   ═══════════════════════════════════════════════════════════════ */
+.grand-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease;
+}
+.grand-reveal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10001;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--white-a40);
+  background: var(--black-a50);
+  color: var(--white);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--tf), transform var(--tf), border-color var(--tf);
+}
+.grand-reveal-close:hover,
+.grand-reveal-close:focus-visible {
+  background: var(--black-a80);
+  border-color: var(--white-a80);
+  transform: scale(1.08);
+}
+
+.grand-reveal.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.reveal-text {
+  font-family: var(--f-display);
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  color: var(--white);
+  text-align: center;
+  line-height: 1.2;
+  text-shadow:
+    0 0 20px var(--frame-pink),
+    0 0 40px var(--glow-pink-mid),
+    0 0 60px var(--glow-pink-lt);
+  animation: popIn 1.5s var(--ease-spring) forwards;
+  z-index: 10000;
+  margin: 0;
+  padding: 20px;
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#birthdayCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 10;
+}
+.firework-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  font-family: var(--f-display);
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  text-align: center;
+  text-shadow:
+    0 0 20px var(--frame-pink),
+    0 0 40px var(--glow-pink-mid);
+  z-index: 20;
+  user-select: none;
+  pointer-events: none;
+}
+
+.grand-reveal-heart-trigger {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 8px 0 0;
+  padding: 0;
+  border: 0 !important;
+  outline: 0 !important;
+  color: inherit;
+  background: transparent;
+  box-shadow: none !important;
+  font-family: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+.grand-reveal-heart {
+  display: block;
+  width: clamp(3.6rem, 7vw, 5rem);
+  height: auto;
+  overflow: visible;
+  fill: #ff477e;
+  filter: drop-shadow(0 0 8px rgba(255, 71, 126, 0.9))
+    drop-shadow(0 0 20px rgba(255, 71, 126, 0.6));
+  animation: heartPulse 1.15s ease-in-out infinite;
+}
+.grand-reveal-heart-trigger span {
+  color: #fff3f7;
+  font-family: var(--f-body);
+  font-size: clamp(0.68rem, 1.35vw, 0.86rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(255, 142, 185, 0.9);
+}
+.grand-reveal-heart-trigger:hover {
+  outline: 0 !important;
+  box-shadow: none !important;
+  transform: translateY(-2px);
+}
+.grand-reveal-heart-trigger:hover .grand-reveal-heart,
+.grand-reveal-heart-trigger:focus-visible .grand-reveal-heart {
+  filter: drop-shadow(0 0 11px rgba(255, 71, 126, 1))
+    drop-shadow(0 0 25px rgba(255, 71, 126, 0.78));
+}
+.grand-reveal-heart-trigger:focus-visible {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.grand-reveal-heart-trigger:focus:not(:focus-visible) {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 50px;
+  height: 70px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  opacity: 0.7;
+  animation: balloonFloat linear infinite;
+}
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: var(--white-a50);
+}
+@keyframes balloonFloat {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-25vh) translateX(20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-20px) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(-120vh) translateX(0) rotate(0deg);
+  }
+}
+
+/* Character and cake finish: soften the flat shapes with layered shading and detail. */
+#cakeFinaleSection {
+  --skin-color: #d99578;
+  --hair: #30231f;
+  --hair-shade: #574039;
+  --eyebrow: #392823;
+  --nose-color: #9b5e4d;
+  --smile-color: #a94e59;
+  --blush-pink: rgba(190, 92, 104, 0.34);
+  --blush-lt: rgba(224, 137, 134, 0.12);
+  --clothes: #718ca4;
+  --clothes-shade: #2e4054;
+  --skirt: #65435e;
+  --chair: #634a3b;
+  --table: #514c49;
+  --shoe: #34384e;
+}
+
+.head {
+  overflow: visible;
+  border: 1px solid rgba(111, 59, 46, 0.3);
+  border-radius: 44% 44% 48% 48% / 34% 34% 60% 60%;
+  background:
+    radial-gradient(ellipse at 31% 27%, rgba(255, 224, 190, 0.68), transparent 35%),
+    linear-gradient(105deg, #bd785f 0%, #e5a287 30%, #d99578 68%, #b66f5d 100%);
+  box-shadow:
+    inset 7px 0 12px rgba(111, 59, 46, 0.12),
+    inset -6px -7px 12px rgba(111, 59, 46, 0.14),
+    0 6px 12px rgba(8, 12, 20, 0.16);
+}
+
+.head::before,
+.head::after {
+  position: absolute;
+  top: 45%;
+  width: 12px;
+  height: 23px;
+  border: 1px solid rgba(143, 82, 65, 0.38);
+  border-radius: 50%;
+  background: linear-gradient(90deg, #bc765e, #df9a7d);
+  content: "";
+}
+
+.head::before { left: -8px; }
+.head::after { right: -8px; }
+
+.neck {
+  border-radius: 10px 10px 48% 48%;
+  background: linear-gradient(90deg, #b96e5c, #df9a7d 35%, #d99578 68%, #b96e5c);
+  box-shadow: inset 0 -5px 7px rgba(111, 59, 46, 0.14);
+}
+
+.hair2 {
+  border-radius: 54% 50% 36% 38% / 42% 44% 24% 24%;
+  background:
+    repeating-linear-gradient(104deg, transparent 0 10px, rgba(201, 162, 127, 0.12) 11px 12px, transparent 13px 20px),
+    linear-gradient(90deg, #211a1a, #40302b 24%, #30231f 57%, #554038 78%, #211a1a);
+  box-shadow: inset 12px 0 16px rgba(12, 10, 12, 0.45), inset -10px 0 15px rgba(12, 10, 12, 0.42);
+}
+
+.hair1 {
+  height: 1.8em;
+  border-radius: 65% 34% 52% 12%;
+  background: linear-gradient(160deg, #654a3e 0%, #352723 36%, #241d1b 78%);
+  box-shadow: inset 10px 3px 10px rgba(201, 162, 127, 0.2), 0 3px 5px rgba(14, 10, 10, 0.22);
+}
+
+.hair1::after {
+  position: absolute;
+  top: 28%;
+  left: 18%;
+  width: 54%;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(214, 177, 138, 0.48);
+  content: "";
+  transform: rotate(-17deg);
+}
+
+.hair3 {
+  height: 1.7em;
+  border-radius: 30% 62% 10% 62%;
+  background: linear-gradient(135deg, #574036, #2a201e 66%);
+  box-shadow: inset 8px 1px 9px rgba(197, 155, 121, 0.16);
+}
+
+#eyeLeft,
+#eyeRight {
+  width: 0.68em;
+  height: 0.46em;
+  border: 1px solid rgba(67, 39, 34, 0.55);
+  background: radial-gradient(ellipse at 52% 55%, #251b19 0 32%, #69463b 35% 49%, #f7e5d2 53% 100%);
+  box-shadow: 0 1px 1px rgba(74, 41, 35, 0.22);
+}
+
+#eyeLeft::after,
+#eyeRight::after {
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff8ec;
+  content: "";
+}
+
+#eyeBrowLeft,
+#eyeBrowRight {
+  height: 0.12em;
+  background: linear-gradient(90deg, transparent, #392823 24% 78%, transparent);
+}
+
+#nose {
+  width: 2px;
+  background: linear-gradient(90deg, rgba(125, 68, 52, 0.12), rgba(125, 68, 52, 0.62));
+}
+
+#smile1 {
+  height: 0.28em;
+  border: 0;
+  border-bottom: 2px solid #984853;
+  border-radius: 0 0 55% 55%;
+  background: transparent;
+  box-shadow: 0 2px 0 rgba(255, 207, 184, 0.55);
+}
+
+#smile2,
+#smile3 {
+  display: none;
+}
+
+#blush1,
+#blush2 {
+  height: 0.5em;
+  filter: blur(1px);
+}
+
+.clothes {
+  overflow: visible;
+  border: 1px solid rgba(25, 39, 55, 0.45);
+  border-radius: 46% 46% 20% 20% / 15% 15% 18% 18%;
+  background:
+    repeating-linear-gradient(102deg, transparent 0 12px, rgba(228, 237, 241, 0.035) 13px 14px, transparent 15px 25px),
+    radial-gradient(ellipse at 50% 8%, #91a7b8 0%, #718ca4 42%, #40566e 76%, #29384c 100%);
+  box-shadow: inset 0 13px 20px rgba(229, 238, 244, 0.12), inset 0 -15px 20px rgba(13, 24, 37, 0.32);
+}
+
+.clothes::before,
+.clothes::after {
+  position: absolute;
+  top: 8%;
+  z-index: -1;
+  width: 2.5em;
+  height: 3.1em;
+  border: 1px solid rgba(25, 39, 55, 0.38);
+  border-radius: 62% 62% 26% 26%;
+  background: linear-gradient(145deg, #829bad, #4d657e 70%, #364c63);
+  content: "";
+}
+
+.clothes::before { left: -1.4em; transform: rotate(12deg); }
+.clothes::after { right: -1.4em; transform: rotate(-12deg); }
+
+.design {
+  top: 0;
+  left: calc(50% - 1.45em);
+  width: 2.9em;
+  height: 2.3em;
+  border-radius: 0;
+  background: linear-gradient(135deg, #f2e9dd, #c9c5bd);
+  clip-path: polygon(0 0, 50% 42%, 100% 0, 73% 100%, 50% 68%, 27% 100%);
+  box-shadow: none;
+  transform: none;
+}
+
+.buttons1,
+.buttons2 {
+  left: calc(50% - 2px);
+  z-index: 6;
+  width: 4px;
+  height: 4px;
+  border: 1px solid rgba(255, 244, 220, 0.78);
+  background: radial-gradient(circle at 35% 30%, #fff7df, #c7a879);
+  box-shadow: 0 1px 2px rgba(18, 28, 40, 0.46);
+}
+
+.buttons1 { top: 39%; }
+.buttons2 { top: 59%; }
+
+#shoulder {
+  width: 1.5em;
+  border: 1px solid rgba(125, 69, 54, 0.18);
+  background: linear-gradient(90deg, #b96f5d, #dfa087 42%, #cd876e);
+  box-shadow: inset 3px 0 5px rgba(111, 59, 46, 0.14);
+}
+
+#shoulder::after {
+  width: 1.5em;
+  border: 1px solid rgba(125, 69, 54, 0.18);
+  background: linear-gradient(90deg, #b96f5d, #dfa087 42%, #cd876e);
+  box-shadow: inset -3px 0 5px rgba(111, 59, 46, 0.14);
+}
+
+#skirt {
+  border: 1px solid rgba(31, 24, 43, 0.42);
+  background:
+    repeating-linear-gradient(100deg, transparent 0 14px, rgba(231, 207, 222, 0.07) 15px 16px, transparent 17px 27px),
+    linear-gradient(180deg, #503850, #76506c 60%, #3e3048);
+  box-shadow: inset 0 7px 12px rgba(234, 210, 226, 0.1), 0 7px 10px rgba(12, 15, 23, 0.18);
+}
+
+#leg,
+#leg::after {
+  background: linear-gradient(90deg, #b96f5d, #dfa087 42%, #ca826b);
+  box-shadow: inset 4px 0 6px rgba(111, 59, 46, 0.12);
+}
+
+#leg {
+  width: 1.2em;
+  border: 1px solid rgba(125, 69, 54, 0.16);
+}
+
+#shoe {
+  top: 340%;
+  left: 20%;
+  width: 2.8em;
+  height: 1.25em;
+  border: 1px solid rgba(20, 22, 32, 0.6);
+  border-radius: 72% 32% 22% 40%;
+  background: linear-gradient(165deg, #62647a, #34384e 64%, #202537);
+  box-shadow: 0 4px 4px rgba(9, 12, 20, 0.28);
+}
+
+#shoe::after {
+  top: -45%;
+  left: 125%;
+  width: 2.8em;
+  height: 1.25em;
+  border: 1px solid rgba(20, 22, 32, 0.6);
+  border-radius: 72% 32% 22% 40%;
+  background: linear-gradient(165deg, #62647a, #34384e 64%, #202537);
+  box-shadow: 0 4px 4px rgba(9, 12, 20, 0.28);
+}
+
+#leg::after {
+  height: 1.15em;
+  border: 1px solid rgba(125, 69, 54, 0.16);
+}
+
+#chair {
+  border: 1px solid rgba(28, 20, 16, 0.5);
+  background:
+    repeating-linear-gradient(8deg, transparent 0 13px, rgba(241, 195, 142, 0.1) 14px 15px, transparent 16px 29px),
+    linear-gradient(90deg, #49372f, #765640 28%, #624531 72%, #3e302b);
+  box-shadow: inset 0 12px 18px rgba(246, 218, 187, 0.08), 0 9px 14px rgba(6, 10, 16, 0.2);
+}
+
+#chair::before,
+#chairLeg,
+#chairLeg::before {
+  border-color: #49342a;
+  background: linear-gradient(90deg, #392c28, #6c4b36 48%, #41312a);
+  box-shadow: inset 3px 0 5px rgba(227, 186, 141, 0.12);
+}
+
+.cake-bottom {
+  border: 3px solid #fff3e9;
+  border-radius: 12px 12px 16px 16px;
+  background:
+    radial-gradient(ellipse at 28% 20%, rgba(255, 255, 255, 0.5), transparent 32%),
+    linear-gradient(105deg, #d95893, #f18ab3 34%, #df679c 70%, #ad3e75);
+  box-shadow: inset 0 -8px 10px rgba(125, 31, 76, 0.2), 0 9px 16px rgba(15, 14, 23, 0.25);
+}
+
+.cake-bottom::before {
+  position: absolute;
+  top: 7px;
+  right: 0;
+  left: 0;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 236, 230, 0.8);
+  content: "";
+}
+
+.cake-top {
+  border: 3px solid #fff3e9;
+  border-bottom: 0;
+  border-radius: 12px 12px 3px 3px;
+  background:
+    radial-gradient(ellipse at 28% 12%, rgba(255, 255, 255, 0.72), transparent 44%),
+    linear-gradient(105deg, #ffcadc, #f8a9c5 52%, #df789f);
+  box-shadow: inset 0 -5px 9px rgba(165, 61, 100, 0.13);
+}
+
+.cake-top::after {
+  position: absolute;
+  right: 3px;
+  bottom: -5px;
+  left: 3px;
+  height: 8px;
+  border-radius: 0 0 10px 10px;
+  background: radial-gradient(ellipse at 12% 0, #fff0f4 0 5px, transparent 6px) 0 0 / 20px 8px repeat-x;
+  content: "";
+}
+
+@media (max-width: 600px) {
+  .container-desk {
+    transform: scale(0.92);
+  }
+
+  .clothes::before,
+  .clothes::after {
+    width: 2em;
+  }
+}
+
+/* A warm pool of light keeps the small birthday scene from feeling flat. */
+#cakeFinaleSection {
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(111, 62, 79, 0.24), transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(74, 58, 69, 0.22), transparent 48%),
+    rgba(0, 0, 0, 0.3);
+}
+
+#cakeFinaleSection .cake-balloons {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+#cakeFinaleSection .head {
+  border-radius: 46% 46% 47% 47% / 36% 36% 58% 58%;
+  background:
+    radial-gradient(ellipse at 30% 32%, rgba(255, 232, 210, 0.76), transparent 31%),
+    radial-gradient(ellipse at 71% 62%, rgba(176, 99, 78, 0.23), transparent 39%),
+    linear-gradient(105deg, #b96f5b 0%, #e5a185 33%, #d99276 70%, #b96c59 100%);
+}
+
+#cakeFinaleSection .hair2 {
+  background:
+    repeating-linear-gradient(104deg, transparent 0 9px, rgba(215, 176, 140, 0.13) 10px 11px, transparent 12px 19px),
+    linear-gradient(90deg, #1b1718, #49332d 27%, #282020 58%, #513b32 82%, #20191a);
+  box-shadow:
+    inset 13px 0 17px rgba(12, 10, 12, 0.5),
+    inset -10px 0 15px rgba(12, 10, 12, 0.45),
+    0 5px 9px rgba(10, 8, 10, 0.18);
+}
+
+#cakeFinaleSection .hair1 {
+  left: calc(50% - 2.55em);
+  width: 5.1em;
+  height: 1.95em;
+  border-radius: 72% 30% 56% 18%;
+  background: linear-gradient(155deg, #684a3d 0%, #332522 43%, #20191a 82%);
+  box-shadow: inset 12px 4px 11px rgba(210, 174, 138, 0.17), 0 3px 6px rgba(14, 10, 10, 0.24);
+}
+
+#cakeFinaleSection #eyeLeft,
+#cakeFinaleSection #eyeRight {
+  width: 0.72em;
+  height: 0.52em;
+  border-radius: 48% 48% 55% 55%;
+  background: radial-gradient(ellipse at 52% 55%, #211717 0 30%, #684538 33% 48%, #f8e7d8 52% 100%);
+}
+
+#cakeFinaleSection #blush1,
+#cakeFinaleSection #blush2 {
+  width: 0.95em;
+  height: 0.48em;
+  background: radial-gradient(ellipse, rgba(193, 91, 101, 0.34), rgba(224, 137, 134, 0.04) 72%);
+  filter: blur(1.4px);
+}
+
+#cakeFinaleSection .clothes {
+  background:
+    repeating-linear-gradient(102deg, transparent 0 13px, rgba(235, 242, 246, 0.055) 14px 15px, transparent 16px 26px),
+    radial-gradient(ellipse at 50% 7%, #a2b5c2 0%, #748ea5 40%, #4d657e 74%, #2e3d52 100%);
+  box-shadow:
+    inset 0 13px 20px rgba(240, 246, 249, 0.15),
+    inset 0 -15px 20px rgba(13, 24, 37, 0.34),
+    0 8px 14px rgba(8, 12, 20, 0.16);
+}
+
+#cakeFinaleSection .design {
+  background: linear-gradient(135deg, #fff8eb, #d9d0c6 55%, #b9c0c1);
+}
+
+#cakeFinaleSection #cake {
+  filter: drop-shadow(0 9px 8px rgba(16, 9, 16, 0.27));
+}
+
+#cakeFinaleSection #cake::before {
+  position: absolute;
+  z-index: -1;
+  bottom: -10px;
+  left: -17px;
+  width: 154px;
+  height: 17px;
+  border: 1px solid rgba(255, 248, 231, 0.74);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fffaf0, #c8c3c2 75%, #8d8186);
+  box-shadow: 0 5px 8px rgba(14, 10, 18, 0.24);
+  content: "";
+}
+
+#cakeFinaleSection .cake-bottom {
+  width: 132px;
+  height: 56px;
+  border: 3px solid #fff5e9;
+  border-radius: 11px 11px 15px 15px;
+  background:
+    repeating-linear-gradient(115deg, transparent 0 17px, rgba(255, 229, 208, 0.16) 18px 20px, transparent 21px 33px),
+    linear-gradient(90deg, #b83e70 0%, #e26d98 22%, #f08caf 49%, #db628f 78%, #a93869 100%);
+  box-shadow:
+    inset 0 -9px 0 rgba(129, 37, 75, 0.22),
+    inset 0 7px 0 rgba(255, 239, 227, 0.58),
+    0 3px 5px rgba(84, 30, 54, 0.22);
+}
+
+#cakeFinaleSection .cake-bottom::before {
+  top: 8px;
+  height: 4px;
+  background: linear-gradient(180deg, rgba(255, 249, 236, 0.92), rgba(255, 210, 220, 0.58));
+}
+
+#cakeFinaleSection .cake-bottom::after {
+  position: absolute;
+  right: 5px;
+  bottom: -1px;
+  left: 5px;
+  height: 10px;
+  background:
+    radial-gradient(ellipse at 50% 0, #fff0e7 0 5px, transparent 5.5px) 0 0 / 20px 10px repeat-x;
+  content: "";
+}
+
+#cakeFinaleSection .cake-top {
+  left: 25px;
+  width: 82px;
+  height: 47px;
+  border: 3px solid #fff5e9;
+  border-bottom: 0;
+  border-radius: 12px 12px 4px 4px;
+  background:
+    radial-gradient(circle at 18% 35%, #bd496f 0 2px, transparent 2.6px),
+    radial-gradient(circle at 37% 22%, #f3cf79 0 1.7px, transparent 2.2px),
+    radial-gradient(circle at 67% 31%, #b94a6b 0 2px, transparent 2.6px),
+    radial-gradient(circle at 82% 47%, #f3cf79 0 1.7px, transparent 2.2px),
+    radial-gradient(ellipse at 30% 12%, rgba(255, 255, 255, 0.78), transparent 45%),
+    linear-gradient(105deg, #ffe1e8, #f3a7bd 53%, #d97399);
+  box-shadow: inset 0 -5px 9px rgba(165, 61, 100, 0.14);
+}
+
+#cakeFinaleSection .cake-top::before {
+  position: absolute;
+  top: -8px;
+  left: -3px;
+  z-index: 2;
+  width: calc(100% + 6px);
+  height: 15px;
+  border: 1px solid rgba(255, 249, 236, 0.9);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 24% 45%, #c94f70 0 2px, transparent 2.7px),
+    radial-gradient(circle at 41% 35%, #e9c47b 0 1.5px, transparent 2px),
+    radial-gradient(circle at 63% 47%, #c94f70 0 2px, transparent 2.7px),
+    radial-gradient(circle at 78% 34%, #e9c47b 0 1.5px, transparent 2px),
+    linear-gradient(180deg, #fffdf2, #f4dce0);
+  content: "";
+}
+
+#cakeFinaleSection .cake-top::after {
+  right: 2px;
+  bottom: -7px;
+  left: 2px;
+  height: 10px;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse at 12% 0, #fff7ed 0 5px, transparent 5.5px) 0 0 / 18px 10px repeat-x;
+}
+
+#cakeFinaleSection .candle-sm {
+  z-index: 3;
+  border-color: #fff9f0;
+  box-shadow: 0 1px 4px rgba(82, 39, 51, 0.28);
+}
+
+#cakeFinaleSection .flame {
+  z-index: 4;
+  background: radial-gradient(ellipse at 48% 68%, #fff7ca 0 22%, #ffd44f 48%, #f18a36 78%);
+  box-shadow: 0 0 12px rgba(255, 194, 73, 0.8), 0 0 28px rgba(255, 140, 54, 0.42);
+}
+
+@media (max-width: 600px) {
+  #cakeFinaleSection #cake::before {
+    left: -14px;
+    width: 146px;
+  }
+}
+
+#mainContainerDesk > .cake-girl-illustration,
+#mainContainerDesk > .cake-girl-hands {
+  position: absolute;
+  top: 96px;
+  left: -40px;
+  width: 240px;
+  height: 510px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+#mainContainerDesk > .cake-girl-illustration {
+  z-index: 4;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+#mainContainerDesk > .cake-girl-hands {
+  z-index: 7;
+}
+
+#mainContainerDesk.blowing > .cake-girl-illustration {
+  transform: translateY(-6px);
+  filter: brightness(1.15);
+}
+
+#mainContainerDesk.blowing > .cake-girl-hands {
+  transform: translateY(-8px);
+  transition: transform 0.5s ease;
+}
+
+#mainContainerDesk > .hair1,
+#mainContainerDesk > .hair2,
+#mainContainerDesk > .hair3,
+#mainContainerDesk > .clothes,
+#mainContainerDesk > .head,
+#mainContainerDesk > .neck,
+#mainContainerDesk > #eyeLeft,
+#mainContainerDesk > #eyeRight,
+#mainContainerDesk > #eyeBrowLeft,
+#mainContainerDesk > #eyeBrowRight,
+#mainContainerDesk > #nose,
+#mainContainerDesk > #smile1,
+#mainContainerDesk > #smile2,
+#mainContainerDesk > #smile3,
+#mainContainerDesk > #blush1,
+#mainContainerDesk > #blush2,
+#mainContainerDesk > #chair,
+#mainContainerDesk > #chairLeg,
+#mainContainerDesk > #skirt,
+#mainContainerDesk > #leg,
+#mainContainerDesk > #shoe,
+#mainContainerDesk > #shoulder,
+#mainContainerDesk > #flowerPot,
+#mainContainerDesk > #cup,
+#mainContainerDesk > .chocolate {
+  display: none;
+}
+
+#cakeFinaleSection #table {
+  border: 1px solid rgba(255, 224, 190, 0.16);
+  background:
+    repeating-linear-gradient(7deg, transparent 0 12px, rgba(255, 220, 183, 0.07) 13px 14px, transparent 15px 25px),
+    linear-gradient(180deg, #715846, #554438 62%, #3d332e);
+  box-shadow: inset 0 3px 0 rgba(255, 224, 190, 0.2), 0 7px 14px rgba(3, 5, 10, 0.26);
+}
+
+#cakeFinaleSection #table::before {
+  border: 1px solid rgba(255, 224, 190, 0.12);
+  background:
+    repeating-linear-gradient(7deg, transparent 0 12px, rgba(255, 220, 183, 0.045) 13px 14px, transparent 15px 25px),
+    linear-gradient(180deg, #574639, #3c332f);
+}
+
+@media (max-width: 600px) {
+  #mainContainerDesk > .cake-girl-illustration,
+  #mainContainerDesk > .cake-girl-hands {
+    top: 96px;
+    left: -40px;
+  }
+}

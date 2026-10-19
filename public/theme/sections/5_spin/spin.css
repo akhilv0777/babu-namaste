@@ -1,0 +1,106 @@
+
+/* ═══════════════════════════════════════════════════════════════
+   3D SPINNER SECTION
+   ═══════════════════════════════════════════════════════════════ */
+#spinSection {
+  background: rgba(15, 5, 25, 0.25);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  height: 100vh;
+  height: 100svh;
+  width: 100%;
+}
+#drag-container,
+#spin-container {
+  position: relative;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: rotateX(-10deg);
+  scale: 1;
+  transition: scale 0.5s ease;
+}
+#drag-container img {
+  transform-style: preserve-3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow:
+    0 0 10px var(--white-a30),
+    inset 0 0 2px var(--white-a60);
+  -webkit-box-reflect: below 15px
+    linear-gradient(transparent, transparent, var(--black-a40));
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#drag-container img:hover {
+  box-shadow:
+    0 0 20px rgba(245, 200, 80, 0.8),
+    inset 0 0 5px var(--white);
+  transform: translateY(-10px) scale(1.05);
+  -webkit-box-reflect: below 25px
+    linear-gradient(transparent, transparent, var(--black-a50));
+}
+#drag-container p {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  color: var(--white-a95);
+  text-shadow: 0 0 15px var(--white-a50);
+  white-space: nowrap;
+}
+#ground {
+  width: clamp(300px, 90vw, 900px);
+  height: clamp(300px, 90vw, 900px);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  background: radial-gradient(
+    center center,
+    farthest-side,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+}
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes spinRevert {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+@media (max-width: 800px) {
+  #drag-container { scale: 0.85; }
+  #spin-container { scale: 1; }
+}
+@media (max-width: 500px) {
+  #drag-container { scale: 0.75; }
+  #spin-container { scale: 1; }
+  #drag-container p {
+    top: 120%;
+  }
+}

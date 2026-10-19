@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════════════════
+   BOOK — DIARY LOOK
+   ═══════════════════════════════════════════════════════════════ */
+#bookSection {
+  perspective: 3000px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+}
+.page {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: transform 0.8s var(--ease-smooth);
+}
+.book-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(180px, 32vw, 380px);
+  aspect-ratio: 3 / 4.2;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transform: translate(-50%, -50%);
+  transition: transform 0.8s ease-in-out;
+}
+.book-container.open-book {
+  transform: translateX(0%) translateY(-50%);
+}
+.book-container.closed-back {
+  transform: translateX(50%) translateY(-50%);
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: center;
+}
+.front {
+  background: linear-gradient(145deg, #faf0e0, #f0e8d0);
+  z-index: 2;
+  box-shadow: 5px 0 18px var(--black-a30);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+.front p {
+  color: #2a1a0a !important;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+}
+.back {
+  transform: rotateY(180deg);
+  z-index: 1;
+  background: linear-gradient(145deg, #040e14, #061520);
+  border: 1px solid rgba(245, 230, 163, 0.12);
+  box-shadow: -5px 0 18px var(--black-a30);
+}
+.back p {
+  color: var(--text-soft) !important;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+}
+.back h3 {
+  color: var(--moonlight) !important;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+#cover {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  width: 100%;
+  height: 100%;
+  border: none !important;
+}
+#cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+#cover > * {
+  position: relative;
+  z-index: 1;
+}
+#cover h1,
+#cover p,
+#cover small {
+  color: var(--moonlight) !important;
+}
+#cover small {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+#cover small:hover {
+  opacity: 1;
+  color: var(--gold) !important;
+}
+#cover::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 5%;
+  bottom: 5%;
+  width: 2px;
+  background: var(--gold-a25);
+  border-radius: 1px;
+  z-index: 1;
+}
+
+/* -- BACK COVER -- */
+#back-cover {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  width: 100%;
+  height: 100%;
+  border: none !important;
+}
+#back-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+#back-cover > * {
+  position: relative;
+  z-index: 1;
+}
+#back-cover h2,
+#back-cover p {
+  color: var(--moonlight) !important;
+}
+
+/* -- INNER ELEMENTS -- */
+.cover-title {
+  border-bottom: 1px solid var(--gold-a35);
+  padding-bottom: 8px;
+  font-size: clamp(1.5rem, 4vw, 2.2rem) !important;
+}
+.heart-symbol {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-top: 8px;
+  color: var(--candle-red);
+}
+.photo-frame {
+  width: 85%;
+  height: 45%;
+  max-height: 220px;
+  object-fit: cover;
+  border: 5px solid var(--white-a88);
+  box-shadow: 0 8px 22px var(--black-a35);
+  margin-bottom: 15px;
+  border-radius: 2px;
+  transform: rotate(-3deg);
+  background: #222;
+}
+.back .photo-frame {
+  transform: rotate(3deg);
+}
+
+.book-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+.btn-book {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 30, 45, 0.55);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  color: var(--white);
+  border: 1px solid var(--gold-a40);
+  box-shadow: 0 4px 15px var(--black-a30);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-book-prev {
+  left: 4%;
+}
+.btn-book-next {
+  right: 4%;
+}
+.btn-book:hover {
+  background: var(--gold-a20);
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 8px 20px var(--gold-a20);
+  transform: translateY(-50%) scale(1.12);
+}
+@media (max-width: 768px) {
+  .book-container {
+    width: min(58vw, 280px);
+    aspect-ratio: 3 / 4.5;
+  }
+  .btn-book {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+  .btn-book-prev {
+    left: 2.5%;
+  }
+  .btn-book-next {
+    right: 2.5%;
+  }
+  .photo-frame {
+    border-width: 3px;
+  }
+}
+
+@media (max-width: 600px) {
+  #bookSection #cover .cover-title {
+    font-size: clamp(1.15rem, 5vw, 1.5rem) !important;
+    line-height: 1.1;
+  }
+}
+
+#bookSection {
+  /* background-color: #091526;
+  background-image:
+    radial-gradient(ellipse at 78% 12%, rgba(170, 198, 237, 0.13), transparent 34%),
+    linear-gradient(145deg, #0b192c, #081321 62%, #101a2c); */
+}
+
+#bookSection .front:not(#cover) {
+  background: linear-gradient(145deg, #f5f7fb, #dbe4f1) !important;
+}
+
+#bookSection .front:not(#cover) p {
+  color: #25334a !important;
+}
+
+#bookSection #cover::before {
+  background: linear-gradient(145deg, rgba(21, 39, 67, 0.82), rgba(8, 17, 31, 0.92));
+}
+
+#bookSection .back:not(#back-cover) {
+  background: linear-gradient(145deg, #0c1b30, #14243b);
+}
+
+#bookSection .btn-book {
+  border-color: rgba(193, 216, 247, 0.4);
+  color: #eaf2ff;
+  background-color: rgba(18, 34, 56, 0.82);
+}

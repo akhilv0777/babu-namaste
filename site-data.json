@@ -1,0 +1,526 @@
+{
+  "site": {
+    "title": "Happy Birthday, {{name}}!",
+    "recipientName": "Saumya"
+  },
+
+  "spinLabel": "Birthday Memories!",
+
+  "roseText": "Made with love, just for you 🌹",
+  "grandReveal": {
+    "line1": "Happy Birthday",
+    "line2": "{{name}}!",
+    "tapHint": "Make a wish! Tap here"
+  },
+  "book": [
+    {
+      "id": "p1",
+      "zIndex": 4,
+      "isCover": true,
+      "backContent": {
+        "bgImage": "./assets/images/ss (11).jpg",
+        "title": "Happy Birthday, {{name}}!",
+        "text": "A new chapter, a fresh wish, and a whole year of wonderful things ahead.",
+        "symbol": "💎"
+      },
+      "frontContent": {
+        "bgImage": "./assets/images/ss (18).jpg",
+        "title": "The Golden Days of {{name}}",
+        "chapter": "Your Birthday Chapter",
+        "footer": "Keep Shining, {{name}}"
+      }
+    },
+    {
+      "id": "p2",
+      "zIndex": 3,
+      "backContent": {
+        "img": "./assets/images/ss (2).jpg",
+        "text": "\"Wishing you a heart-full of happiness\" 💛"
+      },
+      "frontContent": {
+        "img": "./assets/images/ss (3).jpg",
+        "text": "\"Here's to more memories together\" 🎞️"
+      }
+    },
+    {
+      "id": "p3",
+      "zIndex": 2,
+      "backContent": {
+        "img": "./assets/images/ss (4).jpg",
+        "text": "\"May your wishes take flight\" 🎂"
+      },
+      "frontContent": {
+        "img": "./assets/images/ss (5).jpg",
+        "text": "\"A bright new year begins\" 🚀"
+      }
+    },
+    {
+      "id": "p4",
+      "zIndex": 1,
+      "backContent": {
+        "img": "./assets/images/ss (7).jpg",
+        "title": "Keep Shining, {{name}}",
+        "text": "The world is brighter with you in it. Happy Birthday!"
+      },
+      "frontContent": {
+        "img": "./assets/images/ss (6).jpg",
+        "text": "\"Your day, your sparkle\" ✨"
+      }
+    }
+  ],
+
+  "memories": [
+    {
+      "img": "./assets/images/ss (7).jpg",
+      "title": "Birthday Girl...",
+      "desc": "Today we're celebrating you, the laughter you bring, and all the little moments that make you so special."
+    },
+    {
+      "img": "./assets/images/ss (8).jpg",
+      "title": "A Wish for You ✨",
+      "desc": "May this birthday bring you calm days, happy surprises, and people who make you feel loved. ✨"
+    },
+    {
+      "img": "./assets/images/ss (9).jpg",
+      "title": "A Wonderful New Year",
+      "desc": "Here's to new adventures, big dreams, and another year of growing into your brightest self. 😍"
+    },
+    {
+      "img": "./assets/images/ss (10).jpg",
+      "title": "Endless Laughter",
+      "desc": "I hope your birthday is full of the funniest stories, favorite people, and happy little surprises! 🌟"
+    },
+    {
+      "img": "./assets/images/ss (11).jpg",
+      "title": "Favorite Memories",
+      "desc": "Every time I look back at our pictures together, I'm grateful for all the smiles we share."
+    },
+    {
+      "img": "./assets/images/ss (12).jpg",
+      "title": "Your Birthday Glow..",
+      "desc": "Your bright smile brings good vibes everywhere. May it shine extra brightly today."
+    },
+    {
+      "img": "./assets/images/ss (13).jpg",
+      "title": "A Kind Heart..",
+      "desc": "You make the people around you feel cared for. Today, it's our turn to celebrate you."
+    },
+    {
+      "img": "./assets/images/ss (14).jpg",
+      "title": "Birthday Fun..",
+      "desc": "May every moment of today's celebration turn into a memory that makes you smile."
+    },
+    {
+      "img": "./assets/images/ss (15).jpg",
+      "title": "Endless Joy..",
+      "desc": "Having you around brings so much joy. Here's to another year of laughter together."
+    },
+    {
+      "img": "./assets/images/ss (16).jpg",
+      "title": "Forever Besties..",
+      "desc": "Keep being your wonderful self and shining bright. Happy Birthday, {{name}}!"
+    }
+  ],
+  "magicalGallery": [
+    {
+      "id": "gallery-memory-19",
+      "type": "image",
+      "src": "./assets/images/ss (19).jpg",
+      "frontNote": "Birthday favorite",
+      "backNote": "The little moments become the best birthday memories."
+    },
+    {
+      "id": "gallery-memory-20",
+      "type": "image",
+      "src": "./assets/images/ss (20).jpg",
+      "frontNote": "Your special day",
+      "backNote": "May this birthday stay in your heart long after the candles fade."
+    },
+    {
+      "id": "gallery-memory-21",
+      "type": "image",
+      "src": "./assets/images/ss (21).jpg",
+      "frontNote": "More fun together",
+      "backNote": "Here's to more stories, laughter, and birthdays together."
+    },
+    {
+      "id": "gallery-memory-22",
+      "type": "image",
+      "src": "./assets/images/ss (22).jpg",
+      "frontNote": "A little birthday joy",
+      "backNote": "Keep this birthday smile close all year."
+    },
+    {
+      "id": "gallery-memory-23",
+      "type": "image",
+      "src": "./assets/images/ss (23).jpg",
+      "frontNote": "Birthday magic",
+      "backNote": "Today, ordinary moments turn into birthday magic."
+    },
+    {
+      "id": "gallery-memory-24",
+      "type": "image",
+      "src": "./assets/images/ss (24).jpg",
+      "frontNote": "A wish worth keeping",
+      "backNote": "Here's to many more birthdays and memories together."
+    },
+    {
+      "id": "gallery-memory-25",
+      "type": "image",
+      "src": "./assets/images/ss (25).jpg",
+      "frontNote": "A bright new year",
+      "backNote": "May the good days, sweet surprises, and big dreams keep coming."
+    },
+    {
+      "id": "gallery-memory-26",
+      "type": "image",
+      "src": "./assets/images/ss (26).jpg",
+      "frontNote": "One for your birthday",
+      "backNote": "Some birthday memories deserve their own special place."
+    }
+  ],
+  "spinner": [
+    { "img": "./assets/images/ss (27).jpg" },
+    { "img": "./assets/images/ss (28).jpg" },
+    { "img": "./assets/images/ss (29).jpg" },
+    { "img": "./assets/images/ss (30).jpg" },
+    { "img": "./assets/images/ss (31).jpg" },
+    { "img": "./assets/images/ss (32).jpg" },
+    { "img": "./assets/images/ss (33).jpg" },
+    { "img": "./assets/images/ss (34).jpg" },
+    { "img": "./assets/images/ss (35).jpg" },
+    { "img": "./assets/images/ss (36).jpg" }
+  ],
+  "playlist": [
+    { "title": "Saumya's Birthday Song", "youtubeId": "nA5Dl0gQeI0" }
+  ],
+  "pageContent": {
+    "sectionLabels": [
+      "A Rainy Birthday Night",
+      "The Window Opens",
+      "For {{name}}",
+      "The Birthday Soundtrack",
+      "A Birthday Toast",
+      "Birthday Wishes",
+      "The Memory Projector",
+      "Our Memories",
+      "Little Moments, Held Close",
+      "Memory Carousel",
+      "The Birthday Glow",
+      "Wishes for Your Year",
+      "A Letter for You",
+      "A Little Birthday Book",
+      "Make a Wish"
+    ],
+    "text": {
+      ".site-loader-eyebrow": "{{name}}'s birthday film",
+      ".site-loader-title": "A little birthday magic",
+      ".site-loader-caption": "is waiting just for you",
+      "#siteLoaderStart span": "Click here to start",
+      "#siteLoaderNote": "Your story and song will begin together",
+      ".neon-sign": "HAPPY\nBIRTHDAY",
+      ".blinds-letter-eyebrow": "A note carried through the rain",
+      "#blindsLetterTitle": "For {{name}}, on your birthday",
+      ".blinds-letter-message p": [
+        "Dear {{name}},",
+        "Tonight, this little note found its way to you just to remind you how loved you are.",
+        "Your warmth, your laughter, and the way you make ordinary moments feel special mean more than words can say. May the year ahead bring you new adventures, peaceful rainy evenings, big dreams, and a thousand reasons to smile.",
+        "Keep being wonderfully you. Today is yours, and you deserve every bit of happiness it brings."
+      ],
+      ".blinds-letter-signoff strong": "Your friends",
+      "#s8Main span": ["candles", "cake", "wishes", "for you"],
+      ".nameTitle": "{{name}}",
+      ".bgTitle": "HAPPY\nBIRTHDAY",
+      ".overviewTitle span": "Today is all about you",
+      ".overviewTitle b": "HAPPY\nBIRTHDAY",
+      ".overviewTitle p": "Wishing you a year filled with joy, laughter, and lovely surprises.",
+      ".textPanel h2": "A wish for {{name}}",
+      ".textPanelScroll": "May your birthday bring your favorite people close, your favorite cake to the table, and a hundred little reasons to smile. Here's to new adventures, warm memories, and a year that feels as wonderful as you are.",
+      ".aboutPanel h2": "Birthday wishes",
+      ".aboutPanelScroll": "Keep shining, keep laughing, and keep being wonderfully you. May this new year of life be full of kind people, exciting plans, peaceful rainy nights, and dreams coming true.",
+      ".aboutPanel span": "Happy Birthday, {{name}}!",
+      ".loreScript": "a midnight birthday, a sky full of rain, and a heart full of wishes",
+      ".connectionTitle span": "today we celebrate",
+      ".connectionTitle b": "{{name}}",
+      ".connectionTitle p": "One very special birthday for one very wonderful friend.",
+      ".relationInfo em": "Birthday girl",
+      ".relationInfo h2": "{{name}}",
+      ".relationInfo blockquote": "The world is brighter with you in it. Happy Birthday!",
+      ".relationText": "Here's to the friend who makes ordinary days feel special and every get-together more fun. I hope your birthday is full of your favorite people, heartfelt wishes, delicious cake, and all the love you give so freely to everyone around you.\n\nMay the year ahead be kind to you, bring your biggest dreams a little closer, and give us many more memories to laugh about together. Have the happiest birthday, {{name}}!",
+      ".message-carousel-side-note": "A LITTLE NOTE FOR {{name}} · KEEP DRAGGING ·",
+      ".message-carousel-monogram": "S",
+      ".message-card-title": [
+        "Hi {{name}}",
+        "A little something for you",
+        "Keep smiling",
+        "You are amazing",
+        "The most beautiful person",
+        "And the cutest",
+        "Since I met you",
+        "I feel lucky every day",
+        "I have a little crush",
+        "Happy birthday, {{name}}"
+      ],
+      ".galleryHero span": "little moments, big smiles",
+      ".galleryHero b": "BIRTHDAY MEMORIES",
+      ".galleryHero p": "A gallery of your favorite people, moments, and birthday magic.",
+      ".galleryItem b": [
+        "A favorite memory",
+        "Our happy moments",
+        "Birthday smiles",
+        "Midnight wishes",
+        "Saumya's moment",
+        "Party time",
+        "Candlelight glow",
+        "Rainy birthday night",
+        "Make a wish",
+        "A slice of happiness",
+        "Party lights",
+        "One more birthday wish",
+        "Birthday balloons",
+        "Wishes come true",
+        "So much to celebrate",
+        "Another year to shine",
+        "Made with love"
+      ],
+      ".galleryItem span": [
+        "01 / birthday joy",
+        "02 / best memories",
+        "03 / pure happiness",
+        "04 / make a wish",
+        "05 / birthday girl",
+        "06 / good company",
+        "07 / birthday night",
+        "08 / cozy wishes",
+        "09 / candlelight",
+        "10 / birthday cake",
+        "11 / let it shine",
+        "12 / all for you",
+        "13 / floating joy",
+        "14 / a new year",
+        "15 / today is yours",
+        "16 / brighter days",
+        "17 / happy birthday"
+      ],
+      ".memory-quote-eyebrow": "For your birthday",
+      ".memory-quote-title": "You are wonderful",
+      ".memory-quote-text": "You have a way of making every moment brighter.",
+      ".memory-quote-more": "Happy birthday, {{name}}. I hope the year ahead brings you the same joy you bring to everyone around you.",
+      ".memory-read-more": "Read More",
+      ".appearanceHero span": "your special day",
+      ".appearanceHero b": "BIRTHDAY GLOW",
+      ".appearanceHero p": "candlelight, cozy rain, and a little extra sparkle",
+      ".lookBook h2": "Set the birthday mood",
+      ".lookScroll": "Dress up, light the candles, and let the birthday sparkle begin. Outside, the rain paints the windows midnight blue; inside, warm lights, favorite people, and a little cake make the night feel magical.\n\nThis is your moment to laugh loudly, make a wish, take the pictures, and enjoy every bit of being celebrated. May the glow of today follow you all year long.",
+      ".detailSheet h2": "Tonight's little details",
+      ".detailScroll b": ["Lights", "Music", "Company", "Finishing touch"],
+      ".detailScroll span": [
+        "Warm candle glow against the rainy night",
+        "Your favorite songs and happy sing-alongs",
+        "Your favorite people gathered close",
+        "A wish, a candle, and a slice of cake"
+      ],
+      ".aestheticQuote": "May your birthday shine brighter than every candle on your cake.",
+      ".styleStrip h2": "Birthday party favorites",
+      ".styleItem span": ["Dress up", "Party sparkle", "Birthday cake", "Decorations", "Good company", "Birthday wishes"],
+      ".styleItem p": [
+        "Wear something that makes you feel like the star of the celebration.",
+        "A little extra shine for your very special day.",
+        "Sweet candles, pretty frosting, and your favorite flavor.",
+        "Twinkling lights, balloons, and a touch of birthday magic.",
+        "Friends who make every laugh and memory even sweeter.",
+        "All the love and happiness you deserve, today and always."
+      ],
+      ".rpHero span": "moments made for you",
+      ".rpHero b": "BIRTHDAY WISHES",
+      ".rpHero p": "A little collection of love, laughter, and hopes for your year ahead.",
+      ".rpItem em": ["birthday wish · midnight", "birthday memory · always", "coming soon · your new year"],
+      ".rpItem h2": ["A year full of beautiful things", "All the laughter we share", "Every wish finds its way"],
+      ".rpItem blockquote": [
+        "May your days be bright and your dreams come true.",
+        "The best memories are still waiting to happen.",
+        "Keep dreaming big. Your next chapter is yours to write."
+      ],
+      ".rpItem .rpText": [
+        "Wishing you new adventures, familiar comforts, and a thousand small moments that make this year unforgettable. May happiness find you wherever you go.",
+        "Today is for celebrating you and every smile you bring into our lives. Here's to more stories, more laughter, and more days together in the year ahead.",
+        "Blow out the candles, make a wish, and step into another year knowing how loved you are. May it be filled with kindness, confidence, and wonderful surprises."
+      ],
+      ".rpItem .rpWriters span": ["with", "with", "with"],
+      ".rpItem .rpWriters b": ["{{name}}", "Your friends", "{{name}}", "Your besties", "{{name}}", "All who love you"],
+      ".aboutHero span": "a little note for you",
+      ".aboutHero b": "HAPPY BIRTHDAY",
+      ".aboutHero p": "May your next trip around the sun be your happiest yet.",
+      ".storyCard h2": "A birthday letter",
+      ".storyScroll": "{{name}}, today is a celebration of you: your kind heart, your bright smile, and all the joy you bring to the people lucky enough to know you.\n\nMay the year ahead bring new places to explore, favorite songs to sing along to, and plenty of moments that make you laugh until your cheeks hurt.\n\nOn quiet rainy nights and bright sunny mornings alike, I hope you always find a reason to feel loved, celebrated, and proud of how far you've come.\n\nBlow out your candles, make a wonderful wish, and save a big slice of cake. You deserve all the happiness this birthday can hold.",
+      ".traitWheel h2": "Wishes for your year",
+      ".traitLine b": [
+        "more laughter", "less worry",
+        "new adventures", "cozy days",
+        "big dreams", "sweet pauses",
+        "good friends", "quiet time",
+        "sunny moments", "rainy magic",
+        "cake", "more cake",
+        "love", "always"
+      ],
+      ".dosCard h2": "Birthday plans",
+      ".dosCard p": [
+        "✦ Make a wish at midnight",
+        "✦ Eat an extra slice of cake",
+        "✦ Take lots of happy pictures",
+        "✦ Celebrate exactly your way"
+      ],
+      ".dontCard h2": "Birthday rules",
+      ".dontCard p": [
+        "✕ No counting the cake slices",
+        "✕ No saving the best wish for later",
+        "✕ No forgetting how loved you are",
+        "✕ No ordinary bedtime before the party"
+      ],
+      ".hobbyGallery h2": "Birthday favorites",
+      ".hobbyItem span": ["birthday cake", "midnight wishes", "birthday roses"],
+      ".quoteSlip": "May every candle carry a wish that finds its way to you.",
+      ".cake-top span": "{{name}}",
+      ".visually-hidden": "Tap or press Enter to blow out the candle"
+    },
+    "attributes": {
+      ".nameTitle": { "data-text": "{{name}}" },
+      ".message-card": {
+        "aria-label": [
+          "1 of 10: Hi {{name}}",
+          "2 of 10: A little something for you",
+          "3 of 10: Keep smiling",
+          "4 of 10: You are amazing",
+          "5 of 10: The most beautiful person",
+          "6 of 10: And the cutest",
+          "7 of 10: Since I met you",
+          "8 of 10: I feel lucky every day",
+          "9 of 10: I have a little crush",
+          "10 of 10: Happy birthday, {{name}}"
+        ]
+      },
+      ".memory-card": {
+        "data-title": [
+          "A little birthday magic",
+          "Your lovely smile",
+          "A moment to treasure",
+          "The best memories",
+          "Always something to celebrate",
+          "A birthday full of joy",
+          "Together is the best place"
+        ],
+        "data-caption": [
+          "You have a way of making every moment brighter.",
+          "The kind of smile that makes a whole day feel lighter.",
+          "The little moments become the best memories.",
+          "Here's to more stories, laughter, and birthdays together.",
+          "May the happy moments keep finding their way to you.",
+          "Today is for celebrating everything that makes you special.",
+          "Keep being your wonderful, lovely self."
+        ],
+        "aria-label": [
+          "Show memory 1: A little birthday magic",
+          "Show memory 2: Your lovely smile",
+          "Show memory 3: A moment to treasure",
+          "Show memory 4: The best memories",
+          "Show memory 5: Always something to celebrate",
+          "Show memory 6: A birthday full of joy",
+          "Show memory 7: Together is the best place"
+        ]
+      },
+      ".rose-bloom-photo": { "alt": "Will you be mine?" }
+    },
+    "images": {
+      ".mountain": "/theme/assets/images/mountain.png",
+      ".collageRose": "https://64.media.tumblr.com/541d43e480e0fd9780c3ffd402f7b6ff/23a070e9b7c8229a-e3/s1280x1920/123f7eb236784d5c492ceb5281c89a443e6c8c5a.pnj",
+      ".collageRose2": "https://64.media.tumblr.com/edf052aee9025d834d8b175f81da01ef/1a953e2a49b01f0a-61/s500x750/059c2af4e3f499f22a13f6383bd4d31e893a3102.pnj",
+      ".collageRose3": "https://64.media.tumblr.com/69a4539c2dc4b5e3f54ec2a8393e3c35/23a070e9b7c8229a-98/s1280x1920/90d95cab233e9e8368549fe8d277871a32697606.pnj",
+      ".collageRose4, .overviewRose": "https://64.media.tumblr.com/0782ca8dfa7165fa91e17a6ad45ef33e/23a070e9b7c8229a-9d/s1280x1920/4a6fb90a6a93545722b143f49c0641d05309ef41.pnj",
+      ".message-card img": [
+        "./assets/images/ss (36).jpg",
+        "./assets/images/ss (37).jpg",
+        "./assets/images/ss (38).jpg",
+        "./assets/images/ss (39).jpg",
+        "./assets/images/ss (40).jpg",
+        "./assets/images/ss (41).jpg",
+        "./assets/images/ss (42).jpg",
+        "./assets/images/ss (43).jpg",
+        "./assets/images/ss (44).jpg",
+        "./assets/images/ss (45).jpg"
+      ],
+      ".memory-backdrop-image": "./assets/images/ss (50).jpg",
+      ".memory-card img": [
+        "./assets/images/ss (50).jpg",
+        "./assets/images/ss (52).jpg",
+        "./assets/images/ss (54).jpg",
+        "./assets/images/ss (56).jpg",
+        "./assets/images/ss (58).jpg",
+        "./assets/images/ss (60).jpg",
+        "./assets/images/ss (62).jpg"
+      ],
+      ".rose-bloom-photo": "https://media1.tenor.com/m/AI_1KAQmMogAAAAd/will-you-be-mine-will-you-be-my-girlfriend.gif"
+    },
+    "backgrounds": {
+      ".bgSlide": [
+        "./assets/images/ss (19).jpg",
+        "./assets/images/ss (20).jpg",
+        "./assets/images/ss (21).jpg",
+        "./assets/images/ss (22).jpg"
+      ],
+      ".galleryItem": [
+        "./assets/images/ss (20).jpg",
+        "./assets/images/ss (21).jpg",
+        "./assets/images/ss (22).jpg",
+        "./assets/images/ss (23).jpg",
+        "./assets/images/ss (28).jpg",
+        "./assets/images/ss (24).jpg",
+        "./assets/images/ss (25).jpg",
+        "./assets/images/ss (26).jpg",
+        "./assets/images/ss (27).jpg",
+        "./assets/images/ss (28).jpg",
+        "./assets/images/ss (29).jpg",
+        "./assets/images/ss (30).jpg",
+        "./assets/images/ss (31).jpg",
+        "./assets/images/ss (32).jpg",
+        "./assets/images/ss (33).jpg",
+        "./assets/images/ss (34).jpg",
+        "./assets/images/ss (35).jpg"
+      ],
+      ".portrait": "./assets/images/ss (19).jpg",
+      ".collageBox": "./assets/images/ss (20).jpg",
+      ".collageBoxSecond": "./assets/images/ss (21).jpg",
+      ".overviewPortrait": "./assets/images/ss (20).jpg",
+      "#s8OverviewSection .miniStack > div": [
+        "./assets/images/ss (25).jpg",
+        "./assets/images/ss (22).jpg"
+      ],
+      ".middlePic": "./assets/images/ss (23).jpg",
+      ".relationPortrait": "./assets/images/ss (20).jpg",
+      ".relationAesthetic > div": [
+        "./assets/images/ss (21).jpg",
+        "./assets/images/ss (22).jpg",
+        "./assets/images/ss (23).jpg"
+      ],
+      ".contentBg": "./assets/images/ss (49).jpg",
+      ".faceFrame": "./assets/images/ss (27).jpg",
+      ".styleItem": [
+        "./assets/images/ss (28).jpg",
+        "./assets/images/ss (29).jpg",
+        "./assets/images/ss (30).jpg",
+        "./assets/images/ss (31).jpg",
+        "./assets/images/ss (32).jpg",
+        "./assets/images/ss (33).jpg"
+      ],
+      ".rpImage": [
+        "./assets/images/ss (24).jpg",
+        "./assets/images/ss (25).jpg",
+        "./assets/images/ss (26).jpg"
+      ],
+      ".hobbyItem > div": [
+        "./assets/images/ss (20).jpg",
+        "./assets/images/ss (21).jpg",
+        "./assets/images/ss (22).jpg"
+      ]
+    }
+  }
+}

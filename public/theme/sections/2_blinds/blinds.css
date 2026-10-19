@@ -1,0 +1,983 @@
+
+.box {
+  background: transparent;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: filter 0.1s ease-out;
+}
+
+.box::after {
+  position: absolute;
+  inset: 0;
+  z-index: 280;
+  background-image: repeating-linear-gradient(103deg, transparent 0 25px, rgba(215, 234, 255, 0.42) 26px, transparent 27px 52px);
+  background-size: 90px 140px;
+  content: "";
+  opacity: 0.35;
+  pointer-events: none;
+  animation: room-rain-fall 0.45s linear infinite;
+}
+
+#blindsSection .box {
+  overflow: hidden;
+}
+
+#blindsSection .box::after {
+  display: none;
+}
+
+@keyframes room-rain-fall {
+  to { background-position: -45px 140px; }
+}
+
+/* Lightning flash animation */
+@keyframes lightning-flash {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  5% {
+    filter: brightness(3) contrast(1.1) saturate(1.1);
+  }
+  10% {
+    filter: brightness(1.3) contrast(1.05);
+  }
+  15% {
+    filter: brightness(3.5) contrast(1.2) saturate(1.1);
+  }
+  30% {
+    filter: brightness(1) contrast(1);
+  }
+}
+
+.flash-active {
+  animation: lightning-flash 0.6s ease-out;
+}
+
+/* Natural Rainy Day Overcast Colors */
+.box1 {
+  background: rgb(55, 65, 81);
+  background: linear-gradient(0deg, #374151 0%, #4b5563 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+}
+
+.box2 {
+  background: rgb(31, 41, 55);
+  background: linear-gradient(180deg, #1f2937 0%, #374151 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.box3 {
+  background: rgb(55, 65, 81);
+  background: linear-gradient(270deg, #374151 0%, #4b5563 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    25% 94%,
+    25% 25%,
+    69% 29%,
+    69% 68%,
+    25% 75%,
+    25% 94%,
+    100% 75%,
+    100% 25%
+  );
+}
+
+.box4 {
+  background: rgb(55, 65, 81);
+  background: linear-gradient(270deg, #374151 0%, #4b5563 100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    25% 94%,
+    25% 25%,
+    69% 29%,
+    69% 68%,
+    25% 75%,
+    25% 94%,
+    100% 75%,
+    100% 25%
+  );
+  transform: scaleX(-1);
+}
+
+.box5 {
+  background-color: #111827;
+  position: absolute;
+  top: 25%;
+  right: 20%;
+  left: 20%;
+  bottom: 25%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    15% 100%,
+    15% 15%,
+    85% 15%,
+    85% 85%,
+    15% 85%,
+    15% 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+/* Window Backgrounds */
+.window-bg {
+  position: absolute;
+  z-index: 98;
+  background: transparent;
+}
+
+.window-bg canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+  background: transparent;
+}
+
+.frameleft-bg {
+  top: 25%;
+  width: 13%;
+  left: 3.8%;
+  bottom: 25%;
+  transform: perspective(30vw) rotateY(45deg);
+}
+
+.frameright-bg {
+  top: 25%;
+  width: 13%;
+  right: 3.8%;
+  bottom: 25%;
+  transform: perspective(30vw) rotateY(-45deg);
+}
+
+.framemiddle-bg {
+  top: 30%;
+  right: 28%;
+  left: 28%;
+  bottom: 30%;
+}
+
+/* Natural Frame Colors */
+.frameleft,
+.frameright,
+.framemiddle {
+  background-color: #1f2937;
+  z-index: 99;
+}
+
+.frameleft {
+  position: absolute;
+  top: 25%;
+  width: 13%;
+  left: 3.8%;
+  bottom: 25%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    10% 100%,
+    10% 10%,
+    90% 10%,
+    90% 90%,
+    10% 90%,
+    10% 100%,
+    100% 100%,
+    100% 0%
+  );
+  transform: perspective(30vw) rotateY(45deg);
+}
+
+.frameright {
+  position: absolute;
+  top: 25%;
+  width: 13%;
+  right: 3.8%;
+  bottom: 25%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    10% 100%,
+    10% 10%,
+    90% 10%,
+    90% 90%,
+    10% 90%,
+    10% 100%,
+    100% 100%,
+    100% 0%
+  );
+  transform: perspective(30vw) rotateY(-45deg);
+}
+
+.framemiddle {
+  position: absolute;
+  top: 30%;
+  right: 28%;
+  left: 28%;
+  bottom: 30%;
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    5% 100%,
+    5% 10%,
+    95% 9%,
+    95% 90%,
+    5% 90%,
+    5% 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+/* Transparent foreground video */
+.sleeping-sofa {
+  position: absolute;
+  z-index: 255;
+  left: 50%;
+  bottom: 6%;
+  width: min(76vw, 540px);
+  aspect-ratio: 2 / 1;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.sleeping-sofa video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Realistic Chandelier */
+.chand {
+  position: absolute;
+  top: 2%;
+  left: 38%;
+  width: 20vw;
+  height: 20vh;
+  background-image: url(https://tim-school.com/codepen/3d-room/chand.png);
+  background-size: 100% 100%;
+  z-index: 222;
+  animation: chandelier-glow 4s infinite ease-in-out;
+}
+
+@keyframes chandelier-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0px 0px 15px rgba(255, 215, 100, 0.5)) sepia(0.2);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 30px rgba(255, 215, 100, 0.8)) sepia(0.3)
+      brightness(1.25);
+  }
+}
+/* Aesthetic Decorations */
+.rug {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: min(68vw, 760px);
+  height: clamp(100px, 19vh, 190px);
+  border: 2px solid rgba(195, 165, 121, 0.72);
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(ellipse at center, transparent 0 13px, rgba(205, 177, 137, 0.14) 14px 16px, transparent 17px 23px),
+    radial-gradient(ellipse at center, #3d4650 0%, #293344 68%, #202b3b 100%);
+  z-index: 100;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.46), inset 0 0 0 5px rgba(15, 23, 35, 0.55), inset 0 0 26px rgba(8, 14, 24, 0.52);
+  transform: translateX(-50%) perspective(32vw) rotateX(54deg);
+}
+
+.rug::before {
+  position: absolute;
+  inset: 8%;
+  border: 2px solid rgba(203, 174, 134, 0.62);
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 5px rgba(17, 26, 39, 0.38);
+  content: "";
+  pointer-events: none;
+}
+
+.rug::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 19%;
+  height: 52%;
+  border: 1px solid rgba(218, 191, 151, 0.54);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse, rgba(218, 191, 151, 0.34) 0 12%, transparent 14%),
+    repeating-conic-gradient(from 22.5deg, rgba(218, 191, 151, 0.2) 0deg 12deg, transparent 12deg 45deg);
+  box-shadow: 0 0 0 4px rgba(23, 31, 43, 0.38), inset 0 0 0 4px rgba(23, 31, 43, 0.32);
+  content: "";
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.blinds-stool {
+  position: absolute;
+  bottom: 8%;
+  left: 6%;
+  width: clamp(82px, 10vw, 112px);
+  height: clamp(78px, 12vh, 100px);
+  z-index: 225;
+  filter: drop-shadow(5px 9px 8px rgba(0, 0, 0, 0.48));
+}
+
+.blinds-stool-seat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 22%;
+  border: 2px solid #4b2c20;
+  border-radius: 9px 9px 6px 6px;
+  background:
+    linear-gradient(90deg, transparent 0 13%, rgba(255, 211, 150, 0.18) 14% 16%, transparent 17% 83%, rgba(33, 17, 12, 0.24) 84%),
+    linear-gradient(180deg, #a56d43, #74462f 68%, #4e3026);
+  box-shadow: inset 0 3px 4px rgba(255, 226, 187, 0.24), inset 0 -4px 6px rgba(27, 15, 11, 0.3);
+}
+
+.blinds-stool-apron {
+  position: absolute;
+  top: 19%;
+  left: 8%;
+  width: 84%;
+  height: 15%;
+  border: 1px solid #4c2f23;
+  border-top: 0;
+  background: linear-gradient(180deg, #805238, #593729);
+}
+
+.blinds-stool-leg {
+  position: absolute;
+  top: 29%;
+  width: 13%;
+  height: 68%;
+  border: 1px solid #4b2d22;
+  border-radius: 2px 2px 4px 4px;
+  background: linear-gradient(90deg, #4e3025, #8c5a38 48%, #563525);
+  transform-origin: top center;
+}
+
+.blinds-stool-leg-left {
+  left: 17%;
+  transform: rotate(5deg);
+}
+
+.blinds-stool-leg-right {
+  right: 17%;
+  transform: rotate(-5deg);
+}
+
+.blinds-stool-stretcher {
+  position: absolute;
+  top: 68%;
+  left: 23%;
+  width: 54%;
+  height: 7%;
+  border: 1px solid #523426;
+  background: #754a32;
+}
+
+.plant {
+  position: absolute;
+  bottom: 16%;
+  right: 25%;
+  font-size: 4vw;
+  z-index: 225;
+  filter: drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.7)) brightness(0.9);
+}
+
+.cat {
+  position: absolute;
+  bottom: 22%;
+  left: 20%;
+  font-size: 3vw;
+  z-index: 225;
+  transform: scaleX(-1);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7)) brightness(0.8);
+}
+
+.neon-sign {
+  position: absolute;
+  top: 26%;
+  right: 22%;
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  font-size: 1.5vw;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px #fbbf24,
+    0 0 10px #f59e0b,
+    0 0 20px #d97706,
+    0 0 40px #b45309;
+  z-index: 101;
+  transform: perspective(30vw) rotateY(-15deg);
+}
+
+/* --- NEW: Aesthetic Paintings --- */
+.painting-1 {
+  position: absolute;
+  top: 38%;
+  left: 21.5%; /* Placed on the left side of the back wall */
+  width: 5.5vw;
+  height: 14vh;
+  background-image: url("../../assets/images/ss%20(19).jpg");
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #111827; /* Matches wall shadows */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+  z-index: 101;
+  filter: brightness(0.52) saturate(0.72) contrast(1.12);
+}
+
+.painting-2 {
+  position: absolute;
+  top: 38%;
+  right: 21.5%; /* Placed on the right side of the back wall */
+  width: 5.5vw;
+  height: 14vh;
+  background-image: url("../../assets/images/ss%20(20).jpg");
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #111827;
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.6);
+  z-index: 101;
+  filter: brightness(0.38) saturate(0.55) hue-rotate(165deg) contrast(1.12);
+}
+
+/* Floor Lamp */
+.aesthetic-lamp {
+  position: absolute;
+  bottom: 15%;
+  right: 20%;
+  width: 6vw;
+  height: 35vh;
+  z-index: 260;
+}
+
+.lamp-glow-effect {
+  position: absolute;
+  top: 5%;
+  left: -100%;
+  width: 300%;
+  height: 150%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 180, 90, 0.35) 0%,
+    rgba(255, 180, 90, 0) 65%
+  );
+  z-index: 222;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: breathe-glow 3s infinite alternate ease-in-out;
+}
+
+@keyframes breathe-glow {
+  from {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.lamp-shade {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 25%;
+  background: linear-gradient(180deg, #fffbeb 0%, #fde68a 100%);
+  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0px -5px 15px rgba(251, 191, 36, 0.7);
+  z-index: 224;
+}
+
+.lamp-pole {
+  position: absolute;
+  top: 24%;
+  left: 45%;
+  width: 10%;
+  height: 75%;
+  background: linear-gradient(90deg, #9ca3af 0%, #4b5563 100%);
+  z-index: 223;
+}
+
+.lamp-base {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 6%;
+  background: #374151;
+  border-radius: 50%;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+  z-index: 223;
+}
+
+.box1,
+.box3,
+.box4 {
+  background: linear-gradient(180deg, #18263b 0%, #243650 100%) !important;
+}
+
+.box2,
+.box5 {
+  background: linear-gradient(180deg, #0b1627 0%, #101d31 100%) !important;
+}
+
+.window-bg {
+  background: transparent;
+  box-shadow: inset 0 0 34px rgba(210, 230, 255, 0.3), 0 0 25px rgba(161, 194, 239, 0.25);
+}
+
+.frameleft,
+.frameright,
+.framemiddle {
+  box-shadow: inset 0 0 0 2px rgba(201, 220, 248, 0.22);
+}
+
+.window-bg canvas {
+  position: relative;
+  z-index: 1;
+}
+
+.window-bg::before,
+.window-bg::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 24%;
+  border: 1px solid rgba(184, 202, 225, 0.2);
+  background:
+    linear-gradient(180deg, rgba(218, 230, 246, 0.18), transparent 10%, transparent 88%, rgba(5, 12, 24, 0.55)),
+    repeating-linear-gradient(90deg, #283b56 0 7%, #3b5270 9%, #1b2b43 16%, #405775 21%, #243750 28%);
+  box-shadow: inset 0 0 12px rgba(3, 9, 18, 0.55), 0 4px 10px rgba(0, 0, 0, 0.32);
+  content: "";
+  pointer-events: none;
+}
+
+.window-bg::before {
+  left: 0;
+  border-right-color: rgba(190, 208, 231, 0.52);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 96%);
+}
+
+.window-bg::after {
+  right: 0;
+  border-left-color: rgba(190, 208, 231, 0.52);
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 8% 100%);
+}
+
+.framemiddle-bg::before,
+.framemiddle-bg::after {
+  width: 27%;
+}
+
+.frameleft-bg::before,
+.frameleft-bg::after,
+.frameright-bg::before,
+.frameright-bg::after {
+  width: 32%;
+}
+
+.curtain-track {
+  position: absolute;
+  top: -2px;
+  right: -3%;
+  left: -3%;
+  z-index: 3;
+  height: clamp(4px, 0.7vh, 8px);
+  border: 1px solid rgba(203, 218, 237, 0.5);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #8294ab, #27384f 55%, #101a2a);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+
+.aesthetic-lamp {
+  filter: hue-rotate(178deg) saturate(0.5);
+}
+
+.blinds-bird {
+  position: absolute;
+  width: clamp(58px, 6vw, 78px);
+  aspect-ratio: 4 / 3;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.58));
+  will-change: left, top, transform, opacity;
+}
+
+.blinds-bird svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: scaleX(1);
+}
+
+.blinds-bird.is-flying-left svg {
+  transform: scaleX(-1);
+}
+
+.blinds-bird .bird-tail,
+.blinds-bird .bird-body,
+.blinds-bird .bird-neck,
+.blinds-bird .bird-head {
+  fill: #dce6ee;
+  stroke: #8194a6;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.blinds-bird .bird-body {
+  fill: #f4f5f3;
+}
+
+.blinds-bird .bird-head {
+  fill: #f8f7f2;
+}
+
+.blinds-bird .wing-left,
+.blinds-bird .wing-right {
+  fill: #c4d1dd;
+  stroke: #8496a7;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.blinds-bird .wing-left,
+.blinds-bird .wing-right {
+  transform-box: fill-box;
+}
+
+.blinds-bird .wing-left {
+  transform-origin: 88% 82%;
+}
+
+.blinds-bird .wing-right {
+  transform-origin: 12% 82%;
+}
+
+.blinds-bird .wing-feather {
+  fill: none;
+  stroke: rgba(88, 108, 128, 0.65);
+  stroke-linecap: round;
+  stroke-width: 1.3;
+}
+
+.blinds-bird .bird-beak {
+  fill: #d6a45f;
+  stroke: #9a7040;
+  stroke-linejoin: round;
+  stroke-width: 1;
+}
+
+.blinds-bird .bird-eye {
+  fill: #263746;
+}
+
+.blinds-bird .bird-feet {
+  fill: none;
+  stroke: #bd8c56;
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.blinds-letter {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: clamp(76px, 7vw, 96px);
+  padding: 3px 3px 2px;
+  border: 0;
+  background: transparent;
+  color: #f4e5bd;
+  font: inherit;
+  z-index: 360;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.58));
+  cursor: pointer;
+  transition: filter 180ms ease, scale 180ms ease;
+}
+
+.blinds-letter.is-delivered {
+  pointer-events: auto;
+  animation: letter-arrived 1.4s ease-in-out 0.35s 2;
+}
+
+.blinds-letter:hover,
+.blinds-letter:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 10px rgba(238, 205, 133, 0.8));
+  scale: 1.08;
+}
+
+.blinds-letter svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.blinds-letter .envelope-paper {
+  fill: #f4ead6;
+  stroke: #b99867;
+  stroke-width: 2;
+}
+
+.blinds-letter .envelope-fold,
+.blinds-letter .envelope-corner {
+  fill: none;
+  stroke: #b99867;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.blinds-letter .envelope-seal {
+  fill: #a83a4e;
+  stroke: #f0cf97;
+  stroke-width: 1.5;
+}
+
+.blinds-letter .envelope-seal-mark {
+  fill: none;
+  stroke: #f8e5bd;
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}
+
+.blinds-letter-label {
+  color: #fff0c9;
+  font-family: var(--f-body);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes letter-arrived {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+.blinds-letter-dialog {
+  position: fixed;
+  inset: 0;
+  height: fit-content;
+  width: min(560px, calc(100vw - 36px));
+  margin: auto;
+  max-height: min(88vh, 740px);
+  padding: clamp(58px, 8vw, 74px) clamp(38px, 8vw, 62px);
+  overflow: auto;
+  border: 3px double #9e7950;
+  border-radius: 2px;
+  color: #4b3929;
+  background:
+    linear-gradient(rgba(249, 239, 216, 0.64), rgba(249, 239, 216, 0.64)),
+    url("https://png.pngtree.com/background/20250121/original/pngtree-a-piece-of-vintage-blank-paper-with-torn-edges-isolated-on-picture-image_15861437.jpg") center / 100% 100% no-repeat,
+    repeating-linear-gradient(0deg, rgba(130, 91, 49, 0.025) 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 244, 0.82), transparent 72%),
+    #ead9b8;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.68), inset 0 0 35px rgba(111, 71, 34, 0.14);
+  opacity: 0;
+  transform: translateY(18px) scale(0.97);
+  transition: opacity 260ms ease, transform 260ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.blinds-letter-content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 380px);
+  margin: 0 auto;
+  padding: clamp(8px, 1.5vw, 14px);
+}
+
+.blinds-letter-dialog.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.blinds-letter-dialog::before {
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(125, 86, 48, 0.3);
+  content: "";
+  pointer-events: none;
+}
+
+.blinds-letter-dialog::backdrop {
+  background: rgba(3, 8, 17, 0.72);
+  backdrop-filter: blur(7px);
+  transition: background-color 260ms ease;
+}
+
+.blinds-letter-close {
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(71, 80, 91, 0.24);
+  border-radius: 50%;
+  color: #324152;
+  background: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.blinds-letter-eyebrow {
+  margin: 0 30px 8px 0;
+  color: #8a5c37;
+  font-family: var(--f-heading);
+  font-size: 0.68rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+}
+
+.blinds-letter-dialog h2 {
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(125, 86, 48, 0.38);
+  color: #533a28;
+  font-family: var(--f-heading);
+  font-size: clamp(1.5rem, 3.7vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.12;
+  text-shadow: 0 1px rgba(255, 248, 226, 0.8);
+}
+
+.blinds-letter-message p {
+  margin: 0 0 11px;
+  color: #4b3929;
+  font-family: var(--f-heading);
+  font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.blinds-letter-signoff {
+  margin: 15px 0 0;
+  color: #4b3929;
+  font-family: var(--f-heading);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.blinds-letter-signoff strong {
+  color: #8f4050;
+  font-family: var(--f-script);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box::after,
+  .blinds-letter.is-delivered { animation: none; }
+  .blinds-letter-dialog { transition: none; }
+}
+
+@media (max-width: 600px) {
+  .blinds-letter-dialog {
+    width: calc(100vw - 24px);
+    padding: 50px 28px 88px;
+  }
+
+  .blinds-letter-content {
+    padding: 8px;
+  }
+
+  .blinds-letter-message p {
+    margin-bottom: 9px;
+    font-size: 0.96rem;
+    line-height: 1.4;
+  }
+
+  .sleeping-sofa {
+    width: min(88vw, 420px);
+  }
+
+  .chand {
+    left: 36%;
+    width: clamp(90px, 26vw, 112px);
+    height: clamp(90px, 15vh, 130px);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .neon-sign {
+    font-size: clamp(12px, 3.2vw, 15px);
+  }
+
+  .painting-1,
+  .painting-2 {
+    width: clamp(30px, 8vw, 40px);
+    height: clamp(72px, 12vh, 100px);
+  }
+
+  .rug {
+    width: 76vw;
+    height: clamp(78px, 12vh, 110px);
+    transform: translateX(-50%) perspective(100vw) rotateX(54deg);
+  }
+
+  .blinds-stool {
+    left: 3%;
+    width: clamp(70px, 19vw, 88px);
+    height: clamp(72px, 11vh, 88px);
+  }
+
+  .plant {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+
+  .cat {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  .aesthetic-lamp {
+    right: 8%;
+    width: clamp(28px, 7vw, 34px);
+    height: 32vh;
+    z-index: 260;
+  }
+}
