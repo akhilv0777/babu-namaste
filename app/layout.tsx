@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Happy Birthday, Saumya!",
   description: "A little birthday film, made with love for Saumya.",
+  openGraph: {
+    title: "Happy Birthday, Saumya!",
+    description: "A little birthday film, made with love for Saumya.",
+  },
 };
 
 export const viewport: Viewport = {
