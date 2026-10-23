@@ -1,4 +1,7 @@
 .section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: #05080d;
 }
@@ -9,6 +12,7 @@
   width: min(86vw, calc(80svh * 9 / 16));
   aspect-ratio: 9 / 16;
   max-height: 80svh;
+  margin: auto;
   place-items: center;
   overflow: hidden;
   border-radius: 10px;

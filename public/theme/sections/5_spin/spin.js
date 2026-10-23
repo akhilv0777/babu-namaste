@@ -35,7 +35,8 @@ function initSpinner() {
   const ground = byId("ground");
   const arrangeImages = () => {
     const scale = window.innerWidth <= 500 ? 0.75 : window.innerWidth <= 800 ? 0.85 : 1;
-    const radius = Math.min(240, Math.max(60, (window.innerWidth / scale - imgWidth) / 2));
+    const spreadFactor = window.innerWidth <= 500 ? 0.41 : window.innerWidth <= 800 ? 0.45 : 0.5;
+    const radius = Math.min(240, Math.max(72, Math.round((window.innerWidth / scale - imgWidth) * spreadFactor)));
     ospin.style.width = imgWidth + "px";
     ospin.style.height = imgHeight + "px";
     if (ground) ground.style.width = ground.style.height = radius * 3 + "px";

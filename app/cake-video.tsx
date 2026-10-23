@@ -36,7 +36,7 @@ export default function CakeVideo() {
           <div className={styles.thumbnail}>
             <img
               className={styles.thumbnailImage}
-              src="/theme/assets/video/cake.jpg"
+              src="/theme/assets/video/cake.png"
               alt=""
             />
             <button

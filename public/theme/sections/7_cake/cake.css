@@ -989,12 +989,13 @@
 
 .firework-text {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
+  width: min(92vw, 760px);
   transform: translate(-50%, -50%);
   color: var(--white);
   font-family: var(--f-display);
-  font-size: clamp(3rem, 10vw, 6rem);
+  font-size: clamp(2.4rem, 9vw, 5.8rem);
   font-weight: 900;
   text-align: center;
   text-shadow:

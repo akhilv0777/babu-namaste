@@ -7,18 +7,23 @@
   var sections = document.querySelectorAll('.s8-section');
   if (!sections.length) return;
   var NATIVE_WIDTH = 956;     /* 910 + 2*20 padding + 2*3 border */
-  var SECTION_VERTICAL_PADDING = 80;
 
   /* ---------- scale the fixed-width design down on small screens ---------- */
   function fit(section) {
     var stage = section.querySelector('.s8-stage');
     var inner = section.querySelector('.s8');
-    if (!stage || !inner || !stage.clientWidth || !inner.offsetHeight) return;
-    var availableHeight = Math.max(0, window.innerHeight - SECTION_VERTICAL_PADDING);
-    var s = Math.min(1, stage.clientWidth / NATIVE_WIDTH, availableHeight / inner.offsetHeight);
+    if (!stage || !inner) return;
+    var naturalHeight = inner.offsetHeight || 620;
+    var cs = window.getComputedStyle(section);
+    var padX = (parseFloat(cs.paddingLeft) || 16) + (parseFloat(cs.paddingRight) || 16);
+    var padY = (parseFloat(cs.paddingTop) || 20) + (parseFloat(cs.paddingBottom) || 20);
+    var availW = Math.max(240, (section.clientWidth || window.innerWidth) - padX);
+    var availH = Math.max(240, (section.clientHeight || window.innerHeight) - padY);
+    var s = Math.min(1, availW / NATIVE_WIDTH, availH / naturalHeight);
     inner.style.setProperty('--s8-scale', s);
     inner.setAttribute('data-scale', s);
-    stage.style.height = s < 1 ? Math.ceil(inner.offsetHeight * s) + 'px' : '';
+    stage.style.width = Math.round(NATIVE_WIDTH * s) + 'px';
+    stage.style.height = Math.round(naturalHeight * s) + 'px';
   }
 
   function fitAll() {

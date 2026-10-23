@@ -18,13 +18,16 @@
   let pointerStart = null;
 
   const render = () => {
-    const step = Math.min(cards[0].offsetWidth + 18, carousel.clientWidth * 0.29);
+    const isCompact = window.innerWidth <= 860;
+    const cardW = cards[0].offsetWidth || 160;
+    const step = Math.min(cardW + 18, carousel.clientWidth * (isCompact ? 0.24 : 0.29));
+    const baseShift = isCompact ? Math.max(0, (carousel.clientWidth - cardW - step * 1.4) / 2) : 0;
     cards.forEach((card, index) => {
       const offset = (index - activeIndex + cards.length) % cards.length;
       card.style.zIndex = String(cards.length - offset);
       card.style.opacity = offset > 3 ? "0" : String(1 - offset * 0.12);
       card.style.pointerEvents = offset > 2 ? "none" : "auto";
-      card.style.transform = `translateY(-50%) translateX(${offset * step}px) scale(${Math.max(0.82, 1 - offset * 0.045)})`;
+      card.style.transform = `translateY(-50%) translateX(${Math.round(baseShift + offset * step)}px) scale(${Math.max(0.82, 1 - offset * 0.045)})`;
       card.setAttribute("aria-pressed", index === activeIndex ? "true" : "false");
       card.tabIndex = offset > 2 ? -1 : 0;
     });

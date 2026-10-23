@@ -1,76 +1,130 @@
 /* ================================================================
-   5. BOOK
+   5. BOOK — VINTAGE HEIRLOOM KEEPSAKE EDITION
 ================================================================ */
 let currentPage = 1;
 let maxPages = 0;
 let appData = [];
-/* ================================================================
-   5. BOOK - FINAL FULLY DYNAMIC & RESPONSIVE CODE
-   Use this in your book.js file
-================================================================ */
+
+const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+
+function toRoman(num) {
+  return ROMAN_NUMERALS[num - 1] || String(num);
+}
+
 function renderBook(book) {
   const $container = $("#book");
   if (!$container.length || !book?.length) return;
   appData = book;
   maxPages = book.length;
 
-  let htmlContent = book
+  const htmlContent = book
     .map((p, i) => {
       const isLastPage = i === maxPages - 1;
-      const isCoverStyleBack = p.isCover || isLastPage;
+      const isBackCover = isLastPage;
 
       const frontImage =
-        p.frontContent.coverImg || p.frontContent.bgImage || "";
-      const frontBgStyle =
-        p.isCover && frontImage
-          ? `background-image: url('${frontImage}'); background-size: cover !important; background-position: center !important;`
-          : "";
-
+        p.frontContent.coverImg || p.frontContent.bgImage || p.frontContent.img || "";
       const backImage =
         p.backContent.backCoverImg ||
         p.backContent.bgImage ||
         p.backContent.img ||
         "";
-      const backBgStyle =
-        isCoverStyleBack && backImage
-          ? `background-image: url('${backImage}'); background-size: cover !important; background-position: center !important;`
-          : "";
 
-      const frontOverlay = frontImage ? "rgba(0, 0, 0, 0.66)" : "transparent";
-      const backOverlay = backImage ? "rgba(0, 0, 0, 0.71)" : "transparent";
+      const frontPageNum = i * 2;
+      const backPageNum = i * 2 + 1;
 
-      // Generate HTML using Bootstrap 5 classes
       const front = p.isCover
-        ? `<div class="front p-0 border-0" id="cover" style="${frontBgStyle}">
-           <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center p-4 text-center" style="background-color: ${frontOverlay}; border-radius: inherit;">
-               <h1 class="text-white fw-bold mb-3" style="font-size: clamp(1.5rem, 4vw, 2.2rem); text-shadow: 2px 2px 5px rgba(0,0,0,0.9);">${p.frontContent.title || ""}</h1>
-               <p class="text-light fw-bold" style="font-size: clamp(0.9rem, 2.5vw, 1.2rem); text-shadow: 1px 1px 4px rgba(0,0,0,0.9);">${p.frontContent.chapter || ""}</p>
-               <small class="mt-4 fw-bold" onclick="goNext()" style="cursor:pointer; color:#ffdd59; font-size: clamp(0.7rem, 2vw, 0.9rem); text-shadow: 1px 1px 3px rgba(0,0,0,0.8); text-transform: uppercase;">${p.frontContent.footer || ""}</small>
-           </div>
-         </div>`
-        : `<div class="front d-flex flex-column justify-content-center align-items-center p-3 text-center">
-           ${p.frontContent.img ? `<img src="${p.frontContent.img}" class="img-fluid rounded mb-3 photo-frame" loading="lazy">` : ""}
-           <p class="text-dark" style="font-size: clamp(0.85rem, 2vw, 1rem);">${p.frontContent.text || ""}</p>
-         </div>`;
+        ? `<div class="front vintage-cover" id="cover">
+             <div class="vintage-cover-leather">
+               <div class="vintage-cover-filigree">
+                 <span class="vintage-corner vintage-corner-tl" aria-hidden="true"></span>
+                 <span class="vintage-corner vintage-corner-tr" aria-hidden="true"></span>
+                 <span class="vintage-corner vintage-corner-bl" aria-hidden="true"></span>
+                 <span class="vintage-corner vintage-corner-br" aria-hidden="true"></span>
+                 <span class="vintage-cover-kicker">${p.frontContent.chapter || "Keepsake Edition"}</span>
+                 ${
+                   frontImage
+                     ? `<div class="vintage-cover-medallion">
+                          <img src="${frontImage}" alt="" loading="eager" />
+                        </div>`
+                     : ""
+                 }
+                 <h1 class="cover-title">${p.frontContent.title || ""}</h1>
+                 <div class="vintage-ornament" aria-hidden="true">✦ ─── ❦ ─── ✦</div>
+                 <small class="vintage-cover-cta" onclick="goNext()">${p.frontContent.footer || "Tap to Open"}</small>
+               </div>
+             </div>
+           </div>`
+        : `<div class="front vintage-page vintage-page-right">
+             <div class="vintage-page-inner">
+               <span class="vintage-page-header" aria-hidden="true">❦ Keepsake Memories ❦</span>
+               ${
+                 p.frontContent.img
+                   ? `<div class="vintage-photo-mount">
+                        <img src="${p.frontContent.img}" class="photo-frame" alt="" loading="lazy" />
+                      </div>`
+                   : ""
+               }
+               <div class="vintage-ornament-sm" aria-hidden="true">─── ✦ ───</div>
+               <p class="vintage-caption">${p.frontContent.text || ""}</p>
+               <span class="vintage-page-number" aria-hidden="true">— ${toRoman(frontPageNum)} —</span>
+             </div>
+           </div>`;
 
-      const back = isCoverStyleBack
-        ? `<div class="back p-0 border-0" style="${backBgStyle}">
-           <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center p-4 text-center" style="background-color: ${backOverlay}; border-radius: inherit;">
-               <h3 class="text-white fw-bold" style="font-size: clamp(1.3rem, 3.5vw, 1.8rem); text-shadow: 2px 2px 5px rgba(0,0,0,0.9);">${p.backContent.title || ""}</h3>
-               <p class="text-light mt-2" style="font-size: clamp(0.85rem, 2.2vw, 1.05rem); text-shadow: 1px 1px 4px rgba(0,0,0,0.9);">${p.backContent.text || ""}</p>
-               ${p.backContent.symbol ? `<p class="fs-1 mt-3" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.9);">${p.backContent.symbol}</p>` : ""}
-           </div>
-         </div>`
-        : `<div class="back d-flex flex-column justify-content-center align-items-center p-3 text-center">
-           ${p.backContent.img ? `<img src="${p.backContent.img}" class="img-fluid rounded mb-3 photo-frame" loading="lazy">` : ""}
-           <p class="text-dark" style="font-size: clamp(0.85rem, 2vw, 1rem);">${p.backContent.text || ""}</p>
-         </div>`;
+      const back = isBackCover
+        ? `<div class="back vintage-cover is-back-cover" id="back-cover">
+             <div class="vintage-cover-leather">
+               <div class="vintage-cover-filigree">
+                 <span class="vintage-corner vintage-corner-tl" aria-hidden="true"></span>
+                 <span class="vintage-corner vintage-corner-tr" aria-hidden="true"></span>
+                 <span class="vintage-corner vintage-corner-bl" aria-hidden="true"></span>
+                 <span class="vintage-corner vintage-corner-br" aria-hidden="true"></span>
+                 <span class="vintage-cover-kicker">Finis · Anno Domini</span>
+                 ${
+                   backImage
+                     ? `<div class="vintage-cover-medallion">
+                          <img src="${backImage}" alt="" loading="lazy" />
+                        </div>`
+                     : ""
+                 }
+                 <h3 class="vintage-back-title">${p.backContent.title || "Forever Celebrated"}</h3>
+                 <div class="vintage-ornament" aria-hidden="true">✦ ─── ❦ ─── ✦</div>
+                 <p class="vintage-back-text">${p.backContent.text || ""}</p>
+                 ${p.backContent.symbol ? `<span class="vintage-wax-seal" aria-hidden="true">${p.backContent.symbol}</span>` : ""}
+               </div>
+             </div>
+           </div>`
+        : `<div class="back vintage-page vintage-page-left">
+             <div class="vintage-page-inner">
+               <span class="vintage-page-header" aria-hidden="true">${p.backContent.title || "❦ A Golden Chapter ❦"}</span>
+               ${
+                  backImage
+                   ? `<div class="vintage-photo-mount">
+                        <img src="${backImage}" class="photo-frame" alt="" loading="lazy" />
+                      </div>`
+                   : ""
+               }
+               <div class="vintage-ornament-sm" aria-hidden="true">─── ✦ ───</div>
+               <p class="vintage-caption">${p.backContent.text || ""}</p>
+               <span class="vintage-page-number" aria-hidden="true">— ${toRoman(backPageNum)} —</span>
+             </div>
+           </div>`;
 
       return `<div class="page" id="${p.id}" style="z-index:${p.zIndex || maxPages - i}">${front}${back}</div>`;
     })
     .join("");
 
   $container.html(htmlContent);
+  $container.off("click.vintageBook").on("click.vintageBook", ".page", function (e) {
+    if ($(e.target).closest("[onclick]").length) return;
+    const pageId = this.id;
+    const pageNum = parseInt(pageId.replace("p", ""), 10);
+    if (pageNum === currentPage) {
+      goNext();
+    } else if (pageNum === currentPage - 1) {
+      goPrev();
+    }
+  });
   updateBookState();
 }
 
@@ -89,19 +143,26 @@ function updateBookState() {
     );
   }
 
-  const show = (id, flag) => {
-    const b = document.getElementById(id);
-    if (b) b.style.display = flag ? "inline-block" : "none";
-  };
-
-  show("prevBtn", currentPage > 1);
-  show("nextBtn", currentPage <= maxPages);
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  if (prevBtn) {
+    prevBtn.style.display = "inline-flex";
+    prevBtn.disabled = currentPage <= 1;
+    prevBtn.style.opacity = currentPage > 1 ? "1" : "0.38";
+    prevBtn.style.pointerEvents = currentPage > 1 ? "auto" : "none";
+  }
+  if (nextBtn) {
+    nextBtn.style.display = "inline-flex";
+    nextBtn.disabled = currentPage > maxPages;
+    nextBtn.style.opacity = currentPage <= maxPages ? "1" : "0.38";
+    nextBtn.style.pointerEvents = currentPage <= maxPages ? "auto" : "none";
+  }
 }
 
 function goNext() {
   if (currentPage > maxPages) return;
-  document.getElementById(`p${currentPage}`).style.transform =
-    "rotateY(-180deg)";
+  const pageEl = document.getElementById(`p${currentPage}`);
+  if (pageEl) pageEl.style.transform = "rotateY(-180deg)";
   currentPage++;
   updateBookState();
 }
@@ -109,9 +170,13 @@ function goNext() {
 function goPrev() {
   if (currentPage <= 1) return;
   currentPage--;
-  document.getElementById(`p${currentPage}`).style.transform = "rotateY(0deg)";
+  const pageEl = document.getElementById(`p${currentPage}`);
+  if (pageEl) pageEl.style.transform = "rotateY(0deg)";
   updateBookState();
 }
+
+window.goNext = goNext;
+window.goPrev = goPrev;
 
 document.addEventListener("ssMainDataLoaded", (event) => {
   const allData = event.detail;
@@ -121,3 +186,8 @@ document.addEventListener("ssMainDataLoaded", (event) => {
     console.warn("Book data is missing in data.json!");
   }
 });
+
+if (window.ssMainData?.book) {
+  renderBook(window.ssMainData.book);
+}
+

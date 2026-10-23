@@ -234,16 +234,21 @@ setTimeout(triggerStormLightning, 3000);
 function initBirdLetterAnimation() {
   if (!window.gsap) return;
 
+  const section = document.getElementById("blindsSection");
   const bird = document.getElementById("blindsBird");
   const letter = document.getElementById("blindsLetter");
   const stoolSeat = document.querySelector("#blindsSection .blinds-stool-seat");
   const letterDialog = document.getElementById("blindsLetterDialog");
   const letterClose = letterDialog?.querySelector(".blinds-letter-close");
   const room = document.querySelector("#blindsSection .box");
-  if (!bird || !letter || !stoolSeat || !letterDialog || !letterClose || !room) return;
+  if (!section || !bird || !letter || !stoolSeat || !letterDialog || !letterClose || !room) return;
 
   const gsap = window.gsap;
   let letterCloseTimer;
+  let hasTriggered = false;
+  let isDelivered = false;
+  let arrivalTimer = null;
+
   gsap.to("#blindsBird .wing-left", {
     scaleY: 0.25,
     duration: 0.11,
@@ -260,6 +265,7 @@ function initBirdLetterAnimation() {
   });
 
   const deliverLetter = () => {
+    isDelivered = true;
     letter.disabled = false;
     letter.setAttribute("aria-hidden", "false");
     letter.setAttribute("aria-label", "Open Saumya's birthday letter");
@@ -287,34 +293,44 @@ function initBirdLetterAnimation() {
     letterDialog.classList.remove("is-visible");
   });
 
-  const windows = [
-    {
-      entry: { left: "10.3%", top: "50%" },
-      outside: { left: "-10%", top: "50%" },
-      flip: false,
-    },
-    {
-      entry: { left: "89.7%", top: "50%" },
-      outside: { left: "110%", top: "50%" },
-      flip: true,
-    },
-  ];
-  const windowPath = windows[Math.floor(Math.random() * windows.length)];
-  bird.classList.toggle("is-flying-left", windowPath.flip);
-  const roomBounds = room.getBoundingClientRect();
-  const seatBounds = stoolSeat.getBoundingClientRect();
-  const letterBounds = letter.getBoundingClientRect();
-  const birdBounds = bird.getBoundingClientRect();
-  const landing = {
-    left: `${seatBounds.left + seatBounds.width / 2 - roomBounds.left}px`,
-    top: `${seatBounds.top - roomBounds.top - birdBounds.height * 0.8}px`,
-  };
-  const letterRestTop = `${seatBounds.top - roomBounds.top - letterBounds.height / 2}px`;
+  const useRightWindow = Math.random() >= 0.5;
   const distantScale = 0.6;
 
+  const computeCoords = () => {
+    const roomBounds = room.getBoundingClientRect();
+    const seatBounds = stoolSeat.getBoundingClientRect();
+    const letterBounds = letter.getBoundingClientRect();
+    const birdBounds = bird.getBoundingClientRect();
+    const winSelector = useRightWindow ? ".frameright" : ".frameleft";
+    const winEl = room.querySelector(winSelector);
+    const winBounds = winEl ? winEl.getBoundingClientRect() : null;
+
+    const entryLeftPct =
+      winBounds && roomBounds.width > 0
+        ? ((winBounds.left + winBounds.width / 2 - roomBounds.left) / roomBounds.width) * 100
+        : useRightWindow
+          ? 89.7
+          : 10.3;
+    const entryTopPct =
+      winBounds && roomBounds.height > 0
+        ? ((winBounds.top + winBounds.height * 0.46 - roomBounds.top) / roomBounds.height) * 100
+        : 45;
+
+    const landingLeft = seatBounds.left + seatBounds.width / 2 - roomBounds.left;
+    const landingTop = seatBounds.top - roomBounds.top - birdBounds.height * 0.75;
+    const letterRestTop = seatBounds.top - roomBounds.top - letterBounds.height * 0.42;
+
+    return {
+      entry: { left: `${entryLeftPct.toFixed(1)}%`, top: `${entryTopPct.toFixed(1)}%` },
+      outside: { left: useRightWindow ? "112%" : "-12%", top: `${entryTopPct.toFixed(1)}%` },
+      landing: { left: `${Math.round(landingLeft)}px`, top: `${Math.round(landingTop)}px` },
+      letterRestTop: `${Math.round(letterRestTop)}px`,
+    };
+  };
+
   gsap.set(bird, {
-    left: windowPath.outside.left,
-    top: windowPath.outside.top,
+    left: useRightWindow ? "112%" : "-12%",
+    top: "45%",
     xPercent: -50,
     yPercent: -50,
     opacity: 0,
@@ -322,58 +338,144 @@ function initBirdLetterAnimation() {
     zIndex: 95,
   });
   gsap.set(letter, {
-    left: landing.left,
-    top: landing.top,
+    opacity: 0,
     xPercent: -50,
     yPercent: -50,
-    opacity: 0,
     rotate: -15,
   });
 
-  const timeline = gsap.timeline({ paused: true });
+  const isSectionActivelyVisible = () => {
+    const loader = document.getElementById("siteLoader");
+    if (
+      document.body.classList.contains("not-loaded") ||
+      (loader && !loader.classList.contains("is-hidden"))
+    ) {
+      return false;
+    }
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (vh <= 0 || rect.height <= 0) return false;
+    const visibleHeight = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+    const ratio = visibleHeight / rect.height;
+    return ratio >= 0.62 && rect.top <= vh * 0.38 && rect.bottom >= vh * 0.62;
+  };
 
-  timeline
-    .to(bird, { opacity: 1, duration: 0.2 })
-    .to(bird, {
-      left: windowPath.entry.left,
-      top: windowPath.entry.top,
-      scale: 1,
-      duration: 1.1,
-      ease: "power2.out",
-    })
-    .set(bird, { zIndex: 350 })
-    .to(bird, {
-      left: landing.left,
-      top: landing.top,
-      duration: 1.3,
-      ease: "power1.inOut",
-    })
-    .to(letter, { opacity: 1, duration: 0.15 })
-    .to(letter, {
-      top: letterRestTop,
-      rotate: 12,
-      duration: 0.6,
-      ease: "bounce.out",
-    }, "<")
-    .call(deliverLetter)
-    .call(() => bird.classList.toggle("is-flying-left", !windowPath.flip), null, "+=0.4")
-    .to(bird, {
-      left: windowPath.entry.left,
-      top: windowPath.entry.top,
-      duration: 1,
-      ease: "power1.in",
-    }, "+=0.4")
-    .set(bird, { zIndex: 95 })
-    .to(bird, {
-      left: windowPath.outside.left,
-      top: windowPath.outside.top,
+  const playBirdAnimation = () => {
+    if (hasTriggered) return;
+    hasTriggered = true;
+    window.removeEventListener("scroll", checkTrigger);
+    obs.disconnect();
+
+    const coords = computeCoords();
+    bird.classList.toggle("is-flying-left", useRightWindow);
+
+    gsap.set(bird, {
+      left: coords.outside.left,
+      top: coords.outside.top,
+      xPercent: -50,
+      yPercent: -50,
       opacity: 0,
       scale: distantScale,
-      duration: 1,
-      ease: "power2.in",
+      zIndex: 95,
+    });
+    gsap.set(letter, {
+      left: coords.landing.left,
+      top: coords.landing.top,
+      xPercent: -50,
+      yPercent: -50,
+      opacity: 0,
+      rotate: -15,
     });
 
-  lazyInit(room, () => timeline.play(), "0px");
+    const timeline = gsap.timeline();
+    timeline
+      .to(bird, { opacity: 1, duration: 0.2 })
+      .to(bird, {
+        left: coords.entry.left,
+        top: coords.entry.top,
+        scale: 1,
+        duration: 1.15,
+        ease: "power2.out",
+      })
+      .set(bird, { zIndex: 350 })
+      .to(bird, {
+        left: coords.landing.left,
+        top: coords.landing.top,
+        duration: 1.35,
+        ease: "power1.inOut",
+      })
+      .to(letter, { opacity: 1, duration: 0.15 })
+      .to(
+        letter,
+        {
+          left: coords.landing.left,
+          top: coords.letterRestTop,
+          rotate: 10,
+          duration: 0.6,
+          ease: "bounce.out",
+        },
+        "<",
+      )
+      .call(deliverLetter)
+      .call(() => bird.classList.toggle("is-flying-left", !useRightWindow), null, "+=0.45")
+      .to(
+        bird,
+        {
+          left: coords.entry.left,
+          top: coords.entry.top,
+          duration: 1.05,
+          ease: "power1.in",
+        },
+        "+=0.45",
+      )
+      .set(bird, { zIndex: 95 })
+      .to(bird, {
+        left: coords.outside.left,
+        top: coords.outside.top,
+        opacity: 0,
+        scale: distantScale,
+        duration: 1,
+        ease: "power2.in",
+      });
+  };
+
+  const checkTrigger = () => {
+    if (hasTriggered) return;
+    if (isSectionActivelyVisible()) {
+      if (!arrivalTimer) {
+        arrivalTimer = window.setTimeout(() => {
+          arrivalTimer = null;
+          if (isSectionActivelyVisible()) {
+            playBirdAnimation();
+          }
+        }, 380);
+      }
+    } else if (arrivalTimer) {
+      window.clearTimeout(arrivalTimer);
+      arrivalTimer = null;
+    }
+  };
+
+  const obs = new IntersectionObserver(checkTrigger, {
+    threshold: [0, 0.35, 0.62, 0.85],
+  });
+  obs.observe(section);
+  window.addEventListener("scroll", checkTrigger, { passive: true });
+
+  window.addEventListener(
+    "resize",
+    () => {
+      if (!isDelivered) return;
+      const coords = computeCoords();
+      gsap.set(letter, {
+        left: coords.landing.left,
+        top: coords.letterRestTop,
+        xPercent: -50,
+        yPercent: -50,
+      });
+    },
+    { passive: true },
+  );
 }
 
 initBirdLetterAnimation();

@@ -409,7 +409,7 @@ h1 { font-family: var(--f-display); color: var(--moonlight); font-size: clamp(1.
 h2 { font-family: var(--f-display); color: var(--moonlight); font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 700; margin-bottom: 12px; line-height: 1.25; }
 h3 { font-family: var(--f-display); color: var(--moonlight); font-size: clamp(1.1rem, 3vw, 1.8rem); font-weight: 600; }
 p { font-size: clamp(0.9rem, 2.3vw, 1.05rem); line-height: 1.75; color: var(--text-soft); margin-bottom: 10px; }
-.section-full { position: relative; width: 100%; height: 100vh; height: 100svh; z-index: 100; display: flex; justify-content: center; align-items: center; }
+.section-full { position: relative; width: 100%; height: 100vh; height: 100svh; margin: 0 auto; z-index: 100; display: flex; justify-content: center; align-items: center; }
 .cinema-carousel-section {
   overflow: hidden;
   padding: clamp(16px, 3vh, 32px) 0;
@@ -830,15 +830,15 @@ p { font-size: clamp(0.9rem, 2.3vw, 1.05rem); line-height: 1.75; color: var(--te
   position: absolute;
   z-index: 3;
   top: 50%;
-  left: clamp(28px, 7vw, 86px);
-  width: min(34vw, 370px);
+  left: max(28px, calc(50% - 480px));
+  width: min(36vw, 390px);
   padding: 24px 26px 26px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
   color: #fff;
-  background: rgba(17, 17, 25, 0.55);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
+  background: rgba(17, 17, 25, 0.62);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px);
   transform: translateY(-50%);
 }
 .memory-quote-eyebrow {
@@ -891,10 +891,10 @@ p { font-size: clamp(0.9rem, 2.3vw, 1.05rem); line-height: 1.75; color: var(--te
   position: absolute;
   z-index: 2;
   top: 50%;
-  left: 53%;
+  left: 52%;
   display: block;
   flex: none;
-  width: 47%;
+  width: min(44vw, 480px);
   height: min(56vh, 390px);
   min-height: 260px;
   overflow: visible;
@@ -979,49 +979,58 @@ p { font-size: clamp(0.9rem, 2.3vw, 1.05rem); line-height: 1.75; color: var(--te
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-@media (max-width: 700px) {
+@media (max-width: 860px) {
   .message-carousel-side-note { left: 8px; font-size: 0.55rem; }
   .message-carousel-monogram { top: 5%; right: 7%; width: 32px; height: 32px; font-size: 1.2rem; }
   .message-carousel-section .message-card {
-    width: clamp(210px, 65vw, 280px);
-    height: min(52vh, 400px);
+    width: clamp(210px, 65vw, 290px);
+    height: min(54vh, 410px);
     min-height: 260px;
   }
-  .message-carousel-section .message-card-count { font-size: clamp(4rem, 18vw, 5.6rem); }
+  .message-carousel-section .message-card-count { font-size: clamp(3.8rem, 16vw, 5.4rem); }
   .memory-carousel-section::after {
     position: absolute;
     z-index: -1;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10, 8, 15, 0.42), transparent 52%, rgba(10, 8, 15, 0.32));
+    background: linear-gradient(180deg, rgba(10, 8, 15, 0.48), transparent 52%, rgba(10, 8, 15, 0.38));
     content: "";
   }
   .memory-carousel-quote {
-    top: 8%;
-    left: 6%;
-    width: 88%;
-    padding: 14px 16px 15px;
-    transform: none;
+    top: 23%;
+    left: 50%;
+    width: min(90vw, 440px);
+    padding: 14px 18px 15px;
+    text-align: center;
+    transform: translate(-50%, -50%);
   }
   .memory-quote-eyebrow { margin-bottom: 5px; font-size: 0.58rem; }
-  .memory-carousel-section .memory-quote-title { margin-bottom: 5px; font-size: 1.2rem; }
+  .memory-carousel-section .memory-quote-title { margin-bottom: 6px; font-size: clamp(1.1rem, 4vw, 1.35rem); }
   .memory-carousel-section .memory-quote-text,
-  .memory-carousel-section .memory-quote-more { margin-bottom: 9px; font-size: 0.76rem; line-height: 1.45; }
-  .memory-read-more { min-height: 34px; min-width: 88px; padding: 5px 10px; font-size: 0.74rem; }
+  .memory-carousel-section .memory-quote-more { margin-bottom: 9px; font-size: clamp(0.75rem, 2.5vw, 0.85rem); line-height: 1.45; }
+  .memory-read-more { min-height: 34px; min-width: 88px; padding: 5px 12px; font-size: 0.74rem; }
   .memory-carousel-section .memory-carousel {
-    top: 59%;
-    left: 8%;
-    width: 92%;
-    height: min(30vh, 250px);
-    min-height: 210px;
-    transform: none;
+    top: 63%;
+    left: 50%;
+    width: min(90vw, 420px);
+    height: min(32vh, 250px);
+    min-height: 195px;
+    transform: translate(-50%, -50%);
   }
   .memory-carousel-section .memory-card {
-    width: clamp(130px, 39vw, 170px);
+    width: clamp(130px, 38vw, 175px);
     border-radius: 16px;
   }
-  .memory-carousel-navigation { bottom: 4%; gap: 10px; }
+  .memory-carousel-navigation { bottom: 4.5%; gap: 10px; }
   .memory-carousel-navigation button { width: 44px; height: 44px; font-size: 1.2rem; }
-  .memory-carousel-caption { right: 5%; bottom: 5.5%; max-width: 35%; font-size: 0.6rem; text-align: right; }
+  .memory-carousel-caption {
+    right: auto;
+    left: 50%;
+    bottom: 1.5%;
+    max-width: 90vw;
+    font-size: 0.62rem;
+    text-align: center;
+    transform: translateX(-50%);
+  }
 }
 .hero-spacer,
 .section-full {

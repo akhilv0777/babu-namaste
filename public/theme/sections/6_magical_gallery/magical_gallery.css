@@ -449,7 +449,7 @@
   width: var(--gallery-screen-width);
   aspect-ratio: var(--gallery-screen-ratio);
   margin: 0;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   overflow: hidden;
   border: 8px solid #080b10;
   border-radius: 12px;
@@ -502,8 +502,8 @@
 
 #magicalGallerySection {
   --gallery-screen-center: 50%;
-  --gallery-screen-top: 33%;
-  --gallery-screen-width: min(44vw, 620px, 50svh);
+  --gallery-screen-top: 44%;
+  --gallery-screen-width: min(46vw, 620px, 52svh);
   --gallery-screen-ratio: 16 / 9;
 }
 
@@ -606,23 +606,25 @@
 
 @media (max-width: 900px) {
   #magicalGallerySection {
-    --gallery-screen-top: 29%;
-    --gallery-screen-width: min(58vw, 380px, 48svh);
+    --gallery-screen-top: 38%;
+    --gallery-screen-width: min(78vw, 420px, 46svh);
   }
 
   #magicalGallerySection .gallery-heading {
-    top: 22px;
-    left: 5%;
-    width: min(112px, 36vw);
+    top: 18px;
+    left: 50%;
+    width: min(86vw, 340px);
+    text-align: center;
+    transform: translateX(-50%);
   }
 
   #magicalGallerySection .gallery-kicker {
-    font-size: 0.62rem;
+    font-size: 0.64rem;
   }
 
   #magicalGallerySection .gallery-heading h2 {
-    font-size: 1.15rem;
-    line-height: 1.05;
+    font-size: 1.2rem;
+    line-height: 1.1;
   }
 
   #magicalGallerySection .gallery-image-frame {
@@ -631,19 +633,23 @@
   }
 
   #magicalGallerySection .gallery-copy {
-    bottom: 7%;
-    left: 4%;
+    bottom: 6%;
+    left: 50%;
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "count" "title" "note" "progress" "controls";
-    row-gap: 3px;
-    width: min(72vw, 360px);
-    padding: 10px 12px;
-    border-left: 2px solid var(--gold);
+    row-gap: 4px;
+    width: min(86vw, 380px);
+    padding: 12px 16px;
+    border-left: 0;
+    border-top: 2px solid var(--gold);
+    border-radius: 8px;
+    text-align: center;
+    transform: translateX(-50%);
   }
 
   #magicalGallerySection .gallery-count {
     grid-area: count;
-    margin: 0 0 3px;
+    margin: 0 0 2px;
     font-size: 0.68rem;
   }
 
@@ -653,23 +659,25 @@
 
   #magicalGallerySection .gallery-feature-title {
     grid-area: title;
-    margin: 0 0 3px;
-    font-size: 1.1rem;
+    margin: 0 0 2px;
+    font-size: 1.15rem;
   }
 
   #magicalGallerySection .gallery-feature-note {
     grid-area: note;
+    max-width: 100%;
+    margin: 0 auto;
     display: -webkit-box;
     overflow: hidden;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    font-size: 0.8rem;
+    line-height: 1.38;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
 
   #magicalGallerySection .gallery-controls {
-    justify-self: start;
-    gap: 7px;
+    justify-self: center;
+    gap: 10px;
     margin-top: 6px;
   }
 

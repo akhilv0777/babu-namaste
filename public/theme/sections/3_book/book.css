@@ -1,38 +1,70 @@
 /* ═══════════════════════════════════════════════════════════════
-   BOOK — DIARY LOOK
+   BOOK — VINTAGE HEIRLOOM DIARY & KEEPSAKE EDITION
    ═══════════════════════════════════════════════════════════════ */
 #bookSection {
-  perspective: 3000px;
+  perspective: 2600px;
   overflow: hidden;
   position: relative;
   width: 100%;
   height: 100vh;
   height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(196, 146, 78, 0.18) 0%, rgba(92, 54, 28, 0.12) 34%, transparent 68%),
+    radial-gradient(ellipse at 50% 100%, rgba(18, 10, 6, 0.65), transparent 60%);
 }
+
+#bookSection::after {
+  content: "✦ VINTAGE BIRTHDAY KEEPSAKE · TAP PAGES OR ARROWS TO TURN ✦";
+  position: absolute;
+  top: clamp(18px, 4vh, 38px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: rgba(235, 206, 152, 0.85);
+  font-family: var(--f-heading);
+  font-size: clamp(0.65rem, 1.4vw, 0.84rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+}
+
 .page {
   position: absolute;
   inset: 0;
   transform-origin: left center;
   transform-style: preserve-3d;
   cursor: pointer;
-  transition: transform 0.8s var(--ease-smooth);
+  transition: transform 0.9s cubic-bezier(0.32, 0.08, 0.24, 1);
 }
+
+/* Single page width W: when open, total width is 2*W centered at 50%.
+   Constrained to <= 43vw so 2*W <= 86vw on mobile, never overflowing! */
 .book-container {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 50%;
-  width: clamp(180px, 32vw, 380px);
+  width: min(43vw, 330px, calc(64svh * 3 / 4.2));
   aspect-ratio: 3 / 4.2;
   transform-style: preserve-3d;
   transform-origin: left center;
   transform: translate(-50%, -50%);
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.85s cubic-bezier(0.32, 0.08, 0.24, 1);
+  filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.72));
 }
+
 .book-container.open-book {
-  transform: translateX(0%) translateY(-50%);
+  transform: translate(0%, -50%);
 }
+
 .book-container.closed-back {
-  transform: translateX(50%) translateY(-50%);
+  transform: translate(50%, -50%);
 }
 
 .front,
@@ -45,229 +77,456 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5%;
-  border-radius: 4px;
   overflow: hidden;
   text-align: center;
 }
-.front {
-  background: linear-gradient(145deg, #faf0e0, #f0e8d0);
-  z-index: 2;
-  box-shadow: 5px 0 18px var(--black-a30);
-  border-right: 1px solid rgba(0, 0, 0, 0.06);
-}
-.front p {
-  color: #2a1a0a !important;
-  font-size: clamp(0.85rem, 2vw, 1rem);
-}
+
 .back {
   transform: rotateY(180deg);
   z-index: 1;
-  background: linear-gradient(145deg, #040e14, #061520);
-  border: 1px solid rgba(245, 230, 163, 0.12);
-  box-shadow: -5px 0 18px var(--black-a30);
-}
-.back p {
-  color: var(--text-soft) !important;
-  font-size: clamp(0.85rem, 2vw, 1rem);
-}
-.back h3 {
-  color: var(--moonlight) !important;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
-#cover {
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  width: 100%;
-  height: 100%;
-  border: none !important;
+.front {
+  z-index: 2;
 }
-#cover::before {
+
+/* ── VINTAGE LEATHER FRONT & BACK COVERS ── */
+.vintage-cover {
+  padding: 0 !important;
+  border-radius: 4px 12px 12px 4px;
+  background:
+    radial-gradient(ellipse at 30% 22%, rgba(124, 58, 38, 0.42), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(255, 235, 195, 0.018) 0 2px, transparent 2px 6px),
+    linear-gradient(145deg, #3b1c14 0%, #26110b 52%, #180a06 100%) !important;
+  border: 2px solid #8c6639 !important;
+  box-shadow:
+    inset 14px 0 24px rgba(0, 0, 0, 0.72),
+    inset 0 0 40px rgba(15, 6, 3, 0.85),
+    6px 10px 28px rgba(0, 0, 0, 0.65);
+}
+
+.vintage-cover.is-back-cover {
+  border-radius: 12px 4px 4px 12px;
+  box-shadow:
+    inset -14px 0 24px rgba(0, 0, 0, 0.72),
+    inset 0 0 40px rgba(15, 6, 3, 0.85),
+    -6px 10px 28px rgba(0, 0, 0, 0.65);
+}
+
+/* Embossed spine groove on cover */
+.vintage-cover::before {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-#cover > * {
-  position: relative;
-  z-index: 1;
-}
-#cover h1,
-#cover p,
-#cover small {
-  color: var(--moonlight) !important;
-}
-#cover small {
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.7;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-top: 15px;
-}
-#cover small:hover {
-  opacity: 1;
-  color: var(--gold) !important;
-}
-#cover::after {
-  content: "";
-  position: absolute;
+  top: 0;
+  bottom: 0;
   left: 12px;
-  top: 5%;
-  bottom: 5%;
-  width: 2px;
-  background: var(--gold-a25);
-  border-radius: 1px;
-  z-index: 1;
-}
-
-/* -- BACK COVER -- */
-#back-cover {
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  width: 100%;
-  height: 100%;
-  border: none !important;
-}
-#back-cover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-#back-cover > * {
-  position: relative;
-  z-index: 1;
-}
-#back-cover h2,
-#back-cover p {
-  color: var(--moonlight) !important;
-}
-
-/* -- INNER ELEMENTS -- */
-.cover-title {
-  border-bottom: 1px solid var(--gold-a35);
-  padding-bottom: 8px;
-  font-size: clamp(1.5rem, 4vw, 2.2rem) !important;
-}
-.heart-symbol {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-top: 8px;
-  color: var(--candle-red);
-}
-.photo-frame {
-  width: 85%;
-  height: 45%;
-  max-height: 220px;
-  object-fit: cover;
-  border: 5px solid var(--white-a88);
-  box-shadow: 0 8px 22px var(--black-a35);
-  margin-bottom: 15px;
-  border-radius: 2px;
-  transform: rotate(-3deg);
-  background: #222;
-}
-.back .photo-frame {
-  transform: rotate(3deg);
-}
-
-.book-controls {
-  position: absolute;
-  inset: 0;
-  z-index: 100;
+  width: 4px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(226, 188, 122, 0.35), rgba(0, 0, 0, 0.6));
+  z-index: 3;
   pointer-events: none;
 }
-.btn-book {
-  pointer-events: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
+
+.vintage-cover.is-back-cover::before {
+  left: auto;
+  right: 12px;
+}
+
+.vintage-cover-leather {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: clamp(10px, 2.2vw, 18px) clamp(10px, 2.2vw, 18px) clamp(10px, 2.2vw, 18px) clamp(18px, 3vw, 24px);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(20, 30, 45, 0.55);
-  backdrop-filter: var(--blur-md);
-  -webkit-backdrop-filter: var(--blur-md);
-  color: var(--white);
-  border: 1px solid var(--gold-a40);
-  box-shadow: 0 4px 15px var(--black-a30);
-  border-radius: 50%;
-  font-size: 1.1rem;
+}
+
+.vintage-cover.is-back-cover .vintage-cover-leather {
+  padding: clamp(10px, 2.2vw, 18px) clamp(18px, 3vw, 24px) clamp(10px, 2.2vw, 18px) clamp(10px, 2.2vw, 18px);
+}
+
+.vintage-cover-filigree {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: clamp(10px, 2vw, 18px) clamp(8px, 1.8vw, 16px);
+  border: 1.5px solid rgba(218, 180, 112, 0.68);
+  outline: 1px dashed rgba(218, 180, 112, 0.34);
+  outline-offset: -5px;
+  border-radius: 4px 8px 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: radial-gradient(circle at 50% 38%, rgba(218, 180, 112, 0.08), transparent 70%);
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.55);
+}
+
+.vintage-corner {
+  position: absolute;
+  width: clamp(12px, 2.4vw, 20px);
+  height: clamp(12px, 2.4vw, 20px);
+  border-color: #e3be7a;
+  border-style: solid;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.vintage-corner-tl {
+  top: 4px;
+  left: 4px;
+  border-width: 2px 0 0 2px;
+}
+
+.vintage-corner-tr {
+  top: 4px;
+  right: 4px;
+  border-width: 2px 2px 0 0;
+}
+
+.vintage-corner-bl {
+  bottom: 4px;
+  left: 4px;
+  border-width: 0 0 2px 2px;
+}
+
+.vintage-corner-br {
+  bottom: 4px;
+  right: 4px;
+  border-width: 0 2px 2px 0;
+}
+
+.vintage-cover-kicker {
+  display: block;
+  color: #d9b676;
+  font-family: var(--f-heading);
+  font-size: clamp(0.55rem, 1.2vw, 0.76rem);
+  font-style: italic;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.vintage-cover-medallion {
+  position: relative;
+  width: clamp(68px, 52%, 145px);
+  aspect-ratio: 1 / 1.15;
+  border-radius: 50% 50% 12px 12px;
+  padding: 4px;
+  background: linear-gradient(135deg, #f0d59c, #9a7038 50%, #e5c380);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.65), 0 0 15px rgba(218, 180, 112, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.vintage-cover-medallion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 48% 48% 9px 9px;
+  filter: sepia(0.32) contrast(1.08) brightness(0.92);
+}
+
+#cover .cover-title,
+.vintage-back-title {
+  margin: 0 !important;
+  padding: 0 4px !important;
+  border: 0 !important;
+  color: #f6e4bc !important;
+  font-family: var(--f-heading) !important;
+  font-size: clamp(0.95rem, 2.3vw, 1.55rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.92), 0 0 18px rgba(218, 180, 112, 0.28) !important;
+}
+
+.vintage-ornament {
+  color: #d8b26e;
+  font-size: clamp(0.6rem, 1.2vw, 0.82rem);
+  letter-spacing: 0.14em;
+  opacity: 0.86;
+  line-height: 1;
+}
+
+.vintage-cover-cta {
+  display: inline-block;
+  margin: 0 !important;
+  padding: 4px 12px;
+  border: 1px solid rgba(227, 190, 122, 0.65);
+  border-radius: 3px;
+  background: rgba(24, 10, 6, 0.72);
+  color: #f6e3b8 !important;
+  font-family: var(--f-heading);
+  font-size: clamp(0.55rem, 1.1vw, 0.72rem) !important;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
-.btn-book-prev {
-  left: 4%;
+
+.vintage-cover-cta:hover {
+  background: #d8b26e;
+  color: #1f0e08 !important;
+  border-color: #f6e3b8;
 }
-.btn-book-next {
-  right: 4%;
+
+.vintage-back-text {
+  margin: 0 !important;
+  color: rgba(244, 228, 196, 0.88) !important;
+  font-family: var(--f-heading);
+  font-size: clamp(0.68rem, 1.35vw, 0.92rem) !important;
+  font-style: italic;
+  line-height: 1.35 !important;
 }
-.btn-book:hover {
-  background: var(--gold-a20);
-  border-color: var(--gold);
-  color: var(--gold);
-  box-shadow: 0 8px 20px var(--gold-a20);
-  transform: translateY(-50%) scale(1.12);
+
+.vintage-wax-seal {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(28px, 4vw, 40px);
+  height: clamp(28px, 4vw, 40px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b8323c, #7a161e 65%, #4a0a10);
+  border: 1.5px solid rgba(227, 190, 122, 0.7);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 190, 190, 0.3);
+  font-size: clamp(0.85rem, 1.6vw, 1.15rem);
 }
+
+/* ── VINTAGE AGED PARCHMENT INNER PAGES ── */
+#bookSection .vintage-page {
+  padding: clamp(8px, 1.6vw, 16px) !important;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 250, 238, 0.5) 0%, rgba(212, 180, 132, 0.35) 100%),
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(139, 98, 54, 0.055) 23px 24px),
+    linear-gradient(135deg, #f7eedb 0%, #ead8b8 54%, #dcc39b 100%) !important;
+  color: #3a2415 !important;
+}
+
+#bookSection .vintage-page-right {
+  border-radius: 2px 10px 10px 2px;
+  border-right: 4px solid #c5ab80 !important;
+  border-top: 1px solid #d8c29d !important;
+  border-bottom: 2px solid #bfa478 !important;
+  box-shadow:
+    inset 22px 0 30px -12px rgba(62, 36, 14, 0.42),
+    inset 0 0 26px rgba(122, 82, 38, 0.22),
+    5px 6px 20px rgba(0, 0, 0, 0.38);
+}
+
+#bookSection .vintage-page-left {
+  border-radius: 10px 2px 2px 10px;
+  border-left: 4px solid #c5ab80 !important;
+  border-top: 1px solid #d8c29d !important;
+  border-bottom: 2px solid #bfa478 !important;
+  box-shadow:
+    inset -22px 0 30px -12px rgba(62, 36, 14, 0.42),
+    inset 0 0 26px rgba(122, 82, 38, 0.22),
+    -5px 6px 20px rgba(0, 0, 0, 0.38);
+}
+
+.vintage-page-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: clamp(8px, 1.5vw, 14px);
+  border: 1px solid rgba(136, 94, 48, 0.36);
+  outline: 1px dotted rgba(136, 94, 48, 0.24);
+  outline-offset: -4px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vintage-page-header {
+  color: #7c5530;
+  font-family: var(--f-heading);
+  font-size: clamp(0.54rem, 1.05vw, 0.72rem);
+  font-style: italic;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.88;
+}
+
+.vintage-photo-mount {
+  position: relative;
+  width: 86%;
+  height: 52%;
+  max-height: 205px;
+  padding: clamp(4px, 0.8vw, 7px) clamp(4px, 0.8vw, 7px) clamp(10px, 1.5vw, 16px);
+  background: #fbf6eb;
+  border: 1px solid rgba(130, 92, 50, 0.38);
+  box-shadow:
+    0 8px 18px rgba(52, 30, 12, 0.28),
+    inset 0 0 10px rgba(166, 128, 82, 0.16);
+  transform: rotate(-1.8deg);
+  flex-shrink: 0;
+}
+
+.vintage-page-left .vintage-photo-mount {
+  transform: rotate(1.8deg);
+}
+
+/* Vintage archival corner tabs on mounted photo */
+.vintage-photo-mount::before,
+.vintage-photo-mount::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: #7a542e;
+  border-style: solid;
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vintage-photo-mount::before {
+  top: 2px;
+  left: 2px;
+  border-width: 2px 0 0 2px;
+}
+
+.vintage-photo-mount::after {
+  bottom: 2px;
+  right: 2px;
+  border-width: 0 2px 2px 0;
+}
+
+.photo-frame {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border: 1px solid rgba(110, 78, 42, 0.25) !important;
+  border-radius: 1px !important;
+  object-fit: cover;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: sepia(0.24) contrast(1.05) brightness(0.98);
+  background: #d8c5a4;
+}
+
+.vintage-ornament-sm {
+  color: #8c6238;
+  font-size: clamp(0.55rem, 1vw, 0.72rem);
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  line-height: 1;
+}
+
+#bookSection .vintage-caption {
+  margin: 0 !important;
+  padding: 0 4px;
+  color: #3a2314 !important;
+  font-family: var(--f-script) !important;
+  font-size: clamp(0.88rem, 1.9vw, 1.28rem) !important;
+  font-weight: 600;
+  line-height: 1.22 !important;
+  text-align: center;
+}
+
+.vintage-page-number {
+  color: #7d5732;
+  font-family: var(--f-heading);
+  font-size: clamp(0.56rem, 1vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+/* ── CENTERED VINTAGE BOOK CONTROLS ── */
+.book-controls {
+  position: absolute;
+  bottom: clamp(18px, 4.5vh, 42px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 4vw, 32px);
+  pointer-events: none;
+}
+
+.btn-book {
+  pointer-events: auto;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  width: clamp(42px, 5vw, 50px);
+  height: clamp(42px, 5vw, 50px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(58, 32, 20, 0.92), rgba(28, 14, 9, 0.96)) !important;
+  color: #f3dfb6 !important;
+  border: 1.5px solid rgba(218, 180, 112, 0.72) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55), inset 0 0 12px rgba(218, 180, 112, 0.15);
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-book:hover:not(:disabled) {
+  background: linear-gradient(145deg, #d8b26e, #a87e3b) !important;
+  border-color: #fff2d2 !important;
+  color: #1e0d07 !important;
+  box-shadow: 0 10px 26px rgba(218, 180, 112, 0.35);
+  transform: translateY(-2px) scale(1.06);
+}
+
 @media (max-width: 768px) {
+  #bookSection::after {
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    max-width: 90vw;
+    white-space: normal;
+  }
+
   .book-container {
-    width: min(58vw, 280px);
-    aspect-ratio: 3 / 4.5;
+    width: min(44vw, 240px, calc(60svh * 3 / 4.3));
+    aspect-ratio: 3 / 4.3;
   }
-  .btn-book {
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
-  }
-  .btn-book-prev {
-    left: 2.5%;
-  }
-  .btn-book-next {
-    right: 2.5%;
-  }
-  .photo-frame {
-    border-width: 3px;
-  }
-}
 
-@media (max-width: 600px) {
-  #bookSection #cover .cover-title {
-    font-size: clamp(1.15rem, 5vw, 1.5rem) !important;
-    line-height: 1.1;
+  .vintage-page-inner {
+    padding: 6px;
+  }
+
+  .vintage-photo-mount {
+    width: 90%;
+    height: 48%;
+    padding: 3px 3px 8px;
+  }
+
+  #bookSection .vintage-caption {
+    font-size: clamp(0.76rem, 3.2vw, 1rem) !important;
   }
 }
 
-#bookSection {
-  /* background-color: #091526;
-  background-image:
-    radial-gradient(ellipse at 78% 12%, rgba(170, 198, 237, 0.13), transparent 34%),
-    linear-gradient(145deg, #0b192c, #081321 62%, #101a2c); */
-}
+@media (max-width: 480px) {
+  .book-container {
+    width: min(44vw, 185px);
+    aspect-ratio: 3 / 4.4;
+  }
 
-#bookSection .front:not(#cover) {
-  background: linear-gradient(145deg, #f5f7fb, #dbe4f1) !important;
-}
+  .vintage-cover-leather,
+  .vintage-cover.is-back-cover .vintage-cover-leather {
+    padding: 8px 8px 8px 12px;
+  }
 
-#bookSection .front:not(#cover) p {
-  color: #25334a !important;
-}
+  .vintage-cover-filigree {
+    padding: 8px 6px;
+  }
 
-#bookSection #cover::before {
-  background: linear-gradient(145deg, rgba(21, 39, 67, 0.82), rgba(8, 17, 31, 0.92));
-}
-
-#bookSection .back:not(#back-cover) {
-  background: linear-gradient(145deg, #0c1b30, #14243b);
-}
-
-#bookSection .btn-book {
-  border-color: rgba(193, 216, 247, 0.4);
-  color: #eaf2ff;
-  background-color: rgba(18, 34, 56, 0.82);
+  #cover .cover-title,
+  .vintage-back-title {
+    font-size: clamp(0.82rem, 4vw, 1.1rem) !important;
+  }
 }
